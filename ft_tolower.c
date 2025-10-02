@@ -4,7 +4,7 @@
 */
 int	tolower(int c);
 
-int tolowerr(int c)
+int tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (c + 32);

@@ -4,7 +4,7 @@
 #include <stddef.h>
 char *strchr(const char *s, int c);
 
-char *strchrr(const char *s, int c)
+char *strchr(const char *s, int c)
 {
 	while (*s != c && *s)
 		s++;
@@ -15,9 +15,10 @@ char *strchrr(const char *s, int c)
 /*
 int	main(void)
 {
-	const char *tkt = "menage";
+	const char *tkt = "mengea";
 	int a = 'a';
 	char *rtn = strchrr(tkt, a);
 	printf("string = %s\n", rtn);
 	return (0);
-}*/
+}
+*/
