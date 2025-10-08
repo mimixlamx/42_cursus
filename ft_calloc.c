@@ -2,15 +2,17 @@
 #include <stdio.h>
 */
 #include <stdlib.h>
-void *calloc(size_t n, size_t size);
-void *calloc(size_t n, size_t size)
+void *calloc(size_t nmemb, size_t size);
+void *callocc(size_t nmemb, size_t size)
 {
 	int *array;
 	long unsigned int cnt;
 
+	if (nmemb ==0 || size == 0)
+		return ((void*)malloc(1 * sizeof(int)));
 	cnt = 0;
-	array = malloc(n * size);
-	while(n > cnt)
+	array = malloc(nmemb * size);
+	while(nmemb > cnt)
 	{
 		array[cnt] = 0;
 		cnt++;
@@ -20,7 +22,7 @@ void *calloc(size_t n, size_t size)
 /*
 int main(void)
 {
-	int size = 10;
+	int size = 0;
 	int *rtnarray;
 	int i = 0;
 

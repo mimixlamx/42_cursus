@@ -2,22 +2,22 @@
 #include <stdio.h>
 */
 #include <stdlib.h>
-char	*strdup(const char *source);
+char	*strdup(const char *s);
 
-char	*strdup(const char *source)
+char	*strdup(const char *s)
 {
 	int len;
 	char *rtn;
 
 	len = 0;
-	while (source[len])
+	while (s[len])
 		len++;
 	len++;
 	rtn = malloc(len * sizeof(char));
 	len = 0;
-	while (source[len])
+	while (s[len])
 	{
-		rtn[len] = source[len];
+		rtn[len] = s[len];
 		len++;
 	}
 	rtn[len] = '\0';
