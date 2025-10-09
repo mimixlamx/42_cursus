@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/03 10:03:43 by mbruyere          #+#    #+#             */
+/*   Updated: 2025/10/03 10:04:31 by mbruyere         ###   ####lausanne.ch   */
+/*                                                                            */
+/* ************************************************************************** */
 /*
 #include <stdio.h>
 */
 #include <stddef.h>
+
 size_t	strlcat(char *dst, const char *src, size_t size);
 
 size_t	strlcat(char *dst, const char *src, size_t size)
 {
-	int tkt;
+	int	tkt;
 
 	tkt = 0;
 	while (*dst)
@@ -15,7 +27,7 @@ size_t	strlcat(char *dst, const char *src, size_t size)
 		dst++;
 		size--;
 	}
-	while(size > 1 && *src)
+	while (size > 1 && *src)
 	{
 		*dst = *src;
 		dst++;

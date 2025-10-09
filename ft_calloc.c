@@ -1,23 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/09 10:49:02 by mbruyere          #+#    #+#             */
+/*   Updated: 2025/10/09 10:51:28 by mbruyere         ###   ####lausanne.ch   */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 #include <stdio.h>
 */
 #include <stdlib.h>
-void *calloc(size_t nmemb, size_t size);
-void *callocc(size_t nmemb, size_t size)
-{
-	int *array;
-	long unsigned int cnt;
 
-	if (nmemb ==0 || size == 0)
-		return ((void*)malloc(1 * sizeof(int)));
+void	*calloc(size_t nmemb, size_t size);
+
+void	*callocc(size_t nmemb, size_t size)
+{
+	int					*array;
+	long unsigned int	cnt;
+
+	if (nmemb == 0 || size == 0)
+		return ((void *)malloc(1 * sizeof(int)));
 	cnt = 0;
 	array = malloc(nmemb * size);
-	while(nmemb > cnt)
+	while (nmemb > cnt)
 	{
 		array[cnt] = 0;
 		cnt++;
 	}
-	return ((void*)array);
+	return ((void *)array);
 }
 /*
 int main(void)

@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/03 09:55:27 by mbruyere          #+#    #+#             */
+/*   Updated: 2025/10/03 09:55:29 by mbruyere         ###   ####lausanne.ch   */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 #include <unistd.h>
 #include <stdio.h>
 */
 int	toupper(int c);
 
-int toupper(int c)
+int	toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')
 		return (c - 32);

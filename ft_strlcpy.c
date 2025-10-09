@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/03 09:48:13 by mbruyere          #+#    #+#             */
+/*   Updated: 2025/10/03 09:48:49 by mbruyere         ###   ####lausanne.ch   */
+/*                                                                            */
+/* ************************************************************************** */
 /*
 #include <stdio.h>
 */
 #include <stddef.h>
+
 size_t	strlcpy(char *dst, const char *src, size_t size);
 
 size_t	strlcpy(char *dst, const char *src, size_t size)
 {
-	int tkt;
+	int	tkt;
 
 	tkt = 0;
 	while (size > 1 && *src)

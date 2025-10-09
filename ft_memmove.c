@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/03 10:00:48 by mbruyere          #+#    #+#             */
+/*   Updated: 2025/10/03 10:01:44 by mbruyere         ###   ####lausanne.ch   */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 #include <stdio.h>
 */
 #include <stddef.h>
+
 void	*memmove(void *dest, const void *src, size_t n);
 
 void	*memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char	*d;
+	unsigned char		*d;
 	const unsigned char	*s;
-	char	tmp[10];
+	char				tmp[10];
+
 	*tmp = '\0';
-
-
 	d = dest;
 	s = src;
 	while (n > 0)
