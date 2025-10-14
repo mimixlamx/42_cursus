@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 09:50:07 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/03 09:50:37 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/14 11:56:31 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 */
 #include <stddef.h>
 
-char	*strrchr(const char *s, int c);
+char	*ft_strrchr(const char *s, int c);
 
-char	*strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
 	int	len;
 

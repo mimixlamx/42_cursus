@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 10:00:48 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/03 10:01:44 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/14 15:24:36 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 */
 #include <stddef.h>
 
-void	*memmove(void *dest, const void *src, size_t n);
+void	*ft_memmove(void *dest, const void *src, size_t n);
 
-void	*memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char		*d;
 	const unsigned char	*s;
 	char				tmp[10];
 
+	if (dest == NULL && src == NULL)
+		return (NULL);
 	*tmp = '\0';
 	d = dest;
 	s = src;
@@ -34,7 +36,7 @@ void	*memmove(void *dest, const void *src, size_t n)
 		s++;
 		n--;
 	}
-	return (d);
+	return (dest);
 }
 /*
 int	main(void)

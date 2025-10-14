@@ -6,16 +6,16 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:30:24 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/09/30 15:34:07 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/14 11:54:14 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stddef.h>
 /*
 #include <stdio.h>
 */
-void	*memset(void *s, int c, size_t n);
+void	*ft_memset(void *s, int c, size_t n);
 
-void	*memset(void *s, int c, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	unsigned char	*b;
 

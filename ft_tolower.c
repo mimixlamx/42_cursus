@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 09:54:33 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/03 09:54:43 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/14 11:56:50 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <unistd.h>
 #include <stdio.h>
 */
-int	tolower(int c);
+int	ft_tolower(int c);
 
-int	tolower(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (c + 32);

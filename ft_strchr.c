@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 10:01:57 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/03 10:03:03 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/14 11:54:38 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 */
 #include <stddef.h>
 
-char	*strchr(const char *s, int c);
+char	*ft_strchr(const char *s, int c);
 
-char	*strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	while (*s != c && *s)
 		s++;

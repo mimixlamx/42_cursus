@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 09:57:36 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/03 09:57:37 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/14 11:53:31 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 */
 #include <stddef.h>
 
-int	memcmp(const void *s1, const void *s2, size_t n);
+int	ft_memcmp(const void *s1, const void *s2, size_t n);
 
-int	memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	const unsigned char	*t1;
 	const unsigned char	*t2;

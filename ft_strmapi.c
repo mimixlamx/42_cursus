@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:37:47 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/14 09:38:04 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/14 13:29:43 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	i = 0;
 	rtn = malloc (lens(s) +1 * sizeof(char));
+	if (rtn == NULL)
+		return (NULL);
 	while (s[i])
 	{
 		rtn[i] = f(i, s[i]);

@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 09:51:01 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/03 09:54:01 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/14 11:53:12 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 */
 #include <stddef.h>
 
-void	*memchr(const void *s, int c, size_t n);
+void	*ft_memchr(const void *s, int c, size_t n);
 
-void	*memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	const unsigned char	*tkt;
 

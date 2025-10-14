@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 10:51:43 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/09 10:52:42 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/14 13:11:11 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 */
 #include <stdlib.h>
 
-char	*strdup(const char *s);
+char	*ft_strdup(const char *s);
 
-char	*strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
 	int		len;
 	char	*rtn;
@@ -27,6 +27,8 @@ char	*strdup(const char *s)
 		len++;
 	len++;
 	rtn = malloc(len * sizeof(char));
+	if (rtn == NULL)
+		return (NULL);
 	len = 0;
 	while (s[len])
 	{

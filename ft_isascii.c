@@ -6,18 +6,18 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:35:49 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/09/30 13:36:58 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/14 13:47:32 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-/*
 #include <unistd.h>
-*/
-int	isascii(int c);
 
-int	isascii(int c)
+//#include <stdio.h>
+int	ft_isascii(int c);
+
+int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
-		return (c);
+		return (1);
 	return (0);
 }
 /*
@@ -26,8 +26,10 @@ int	main(void)
 	int	c;
 	int	tkt;
 
-	c = 128;
-	tkt = isascii(c);
+	c = 'g';
+	tkt = ft_isascii(c);
 	write (1, &tkt, 1);
+	printf ("\nreturn = %d", tkt);
+	return (0);
 }
 */

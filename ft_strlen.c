@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:55:06 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/09/30 13:57:28 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/14 11:55:30 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -14,9 +14,9 @@
 */
 #include <stddef.h>
 
-size_t	strlen(const char *s);
+size_t	ft_strlen(const char *s);
 
-size_t	strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	int	i;
 

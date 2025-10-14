@@ -6,17 +6,17 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 09:48:13 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/03 09:48:49 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/14 16:14:00 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-/*
+
 #include <stdio.h>
-*/
+
 #include <stddef.h>
 
-size_t	strlcpy(char *dst, const char *src, size_t size);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
-size_t	strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	int	tkt;
 
@@ -40,18 +40,17 @@ size_t	strlcpy(char *dst, const char *src, size_t size)
 /*
 int	main(void)
 {
-	char dest[10];
-	const char *source = "012345678910";
-	int len;
+	char dest[50];
+	const char *source = "012345678 9012 345 678 901";
+	unsigned long int len;
 
-	len = strlcpyy(dest, source, sizeof(dest));
+	len = ft_strlcpy(dest, source, 0);
 	printf ("dest = %s \n", dest);
-	printf ("len = %d \n", len);
+	printf ("len = %ld \n", len);
 	if (len >= sizeof(dest))
 		printf ("moins de bytes que a l'origine");
 	else
 		printf ("meme nombres de bites");
 	return (0);
-
 }
 */

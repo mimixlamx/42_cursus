@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 09:00:46 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/03 10:11:14 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/14 11:56:05 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -14,9 +14,9 @@
 */
 #include <stddef.h>
 
-char	*strnstr(const char *big, const char *little, size_t len);
+char	*ft_strnstr(const char *big, const char *little, size_t len);
 
-char	*strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	int	cnt;
 

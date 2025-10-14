@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 10:49:02 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/09 10:51:28 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/14 13:16:03 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 */
 #include <stdlib.h>
 
-void	*calloc(size_t nmemb, size_t size);
+void	*ft_calloc(size_t nmemb, size_t size);
 
-void	*callocc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
 	int					*array;
 	long unsigned int	cnt;
@@ -26,6 +26,8 @@ void	*callocc(size_t nmemb, size_t size)
 		return ((void *)malloc(1 * sizeof(int)));
 	cnt = 0;
 	array = malloc(nmemb * size);
+	if (array == NULL)
+		return (NULL);
 	while (nmemb > cnt)
 	{
 		array[cnt] = 0;

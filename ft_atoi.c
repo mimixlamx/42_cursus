@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 10:58:37 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/03 11:24:57 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/14 11:49:20 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -14,9 +14,9 @@
 */
 #include <stddef.h>
 
-int	atoi(const char *nptr);
+int	ft_atoi(const char *nptr);
 
-int	atoii(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
 	int	rtn;
 	int	signe;
