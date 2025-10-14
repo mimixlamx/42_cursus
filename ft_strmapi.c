@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/14 09:37:47 by mbruyere          #+#    #+#             */
+/*   Updated: 2025/10/14 09:38:04 by mbruyere         ###   ####lausanne.ch   */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 #include <stdio.h>
 */
 #include <stdlib.h>
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-int lens(char const *s);
+int		lens(char const *s);
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
@@ -22,7 +34,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	return (rtn);
 }
 
-int lens(char const *s)
+int	lens(char const *s)
 {
 	int	i;
 

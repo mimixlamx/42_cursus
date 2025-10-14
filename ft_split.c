@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/14 09:41:10 by mbruyere          #+#    #+#             */
+/*   Updated: 2025/10/14 09:44:19 by mbruyere         ###   ####lausanne.ch   */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 #include <stdio.h>
 */
 #include <stdlib.h>
 
 char	**ft_split(char const *s, char c);
-int	lenword(int start, int end);
-char *string(const char * s, int start, int end);
-int countc(const char *s, char c);
+int		lenword(int start, int end);
+char	*string(const char *s, int start, int end);
+int		countc(const char *s, char c);
 
 char	**ft_split(char const *s, char c)
 {
@@ -18,7 +30,7 @@ char	**ft_split(char const *s, char c)
 	start = 0;
 	t = 0;
 	end = 0;
-	array = malloc(countc(s, c) * sizeof(char*));
+	array = malloc (countc(s, c) * sizeof(char *));
 	while (s[end])
 	{
 		end++;
@@ -31,7 +43,7 @@ char	**ft_split(char const *s, char c)
 	return (array);
 }
 
-char *string(const char * s, int start, int end)
+char	*string(const char *s, int start, int end)
 {
 	int		i;
 	int		len;
@@ -59,9 +71,9 @@ int	lenword(int start, int end)
 	return (i);
 }
 
-int countc(const char *s, char c)
+int	countc(const char *s, char c)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (*s)
