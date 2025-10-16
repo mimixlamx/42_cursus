@@ -6,25 +6,25 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:36:37 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/14 09:37:09 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/16 15:03:48 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-/*
 #include <stdio.h>
-*/
+
 char	*ft_itoa(int n);
 int		lenn(int n);
-int		reverse(int n);
 
 char	*ft_itoa(int n)
 {
 	char	*rtn;
 	int		i;
 	int		temp;
+	int		len;
 
-	rtn = malloc ((lenn(n) + 1) * sizeof(char));
+	len = lenn(n);
+	rtn = malloc ((len + 1) * sizeof(char));
 	i = 0;
 	if (n < 0)
 	{
@@ -32,7 +32,7 @@ char	*ft_itoa(int n)
 		n = n * -1;
 		i++;
 	}
-	n = reverse (n);
+	// ajouter ecriture par la fin sans reverse recursive /10 %10 tah le putnbr ?
 	while (n != 0)
 	{
 		temp = n % 10;
@@ -78,16 +78,16 @@ int	reverse(int n)
 	reversed = (reversed * 10) + (n % 10);
 	return (reversed);
 }
-/*
+
 int	main(void)
 {
 	int		n;
 	char	*rtnvalue;
 
-	n = 0;
+	n = 112345670;
 	rtnvalue = ft_itoa(n);
 	printf ("rtnvalue = %s\n", rtnvalue);
 	free (rtnvalue);
 	rtnvalue = NULL;
 	return (0);
-}*/
+}

@@ -6,13 +6,12 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 10:01:57 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/14 11:54:38 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/16 14:12:09 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
+#include <unistd.h>
 #include <stdio.h>
-*/
 #include <stddef.h>
 
 char	*ft_strchr(const char *s, int c);
@@ -28,10 +27,11 @@ char	*ft_strchr(const char *s, int c)
 /*
 int	main(void)
 {
-	const char *tkt = "mengea";
-	int a = 'a';
-	char *rtn = strchrr(tkt, a);
-	printf("string = %s\n", rtn);
+	const char *tkt = "teste";
+	int a = '\0';
+	char *rtn = ft_strchr(tkt, a);
+	write (1, &a, 1);
+	printf("string = %p\n", &rtn);
 	return (0);
 }
 */

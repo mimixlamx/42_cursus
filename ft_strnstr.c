@@ -6,12 +6,11 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 09:00:46 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/14 11:56:05 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/16 11:49:25 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-/*
+
 #include <stdio.h>
-*/
 #include <stddef.h>
 
 char	*ft_strnstr(const char *big, const char *little, size_t len);
@@ -25,7 +24,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		return ((char *)big);
 	while (len > 0 && *big)
 	{
-		while (*big == *little && *little)
+		while (*big == *little && *little && len > 0)
 		{
 			big++;
 			little++;
@@ -48,14 +47,13 @@ int	main(void)
 {
 	char	*b;
 	char	*l;
-	int		le;
+	size_t	le;
 	char	*rtn;
 
-	b = "123atkt12d";
-	l = "d";
-	le = 20;
-	rtn = strnstrr(b, l, le);
+	b = "abcdef";
+	l = "abc\375xx";
+	le = 4;
+	rtn = ft_strnstr(b, l, le);
 	printf("rtn = %s\n", rtn);
 	return (0);
-}
-*/
+}*/
