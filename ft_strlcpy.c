@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 09:48:13 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/14 16:14:00 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/17 17:01:36 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		src++;
 		tkt++;
 	}
+	if (size == 0)
+		return (tkt);
 	*dst = '\0';
 	return (tkt);
 }
@@ -41,7 +43,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 int	main(void)
 {
 	char dest[50];
-	const char *source = "012345678 9012 345 678 901";
+	const char *source = "aaa";
 	unsigned long int len;
 
 	len = ft_strlcpy(dest, source, 0);
@@ -52,5 +54,4 @@ int	main(void)
 	else
 		printf ("meme nombres de bites");
 	return (0);
-}
-*/
+}*/

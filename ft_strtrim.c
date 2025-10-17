@@ -6,12 +6,12 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 14:41:11 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/09 14:45:10 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/17 15:37:05 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-/*
+
 #include <stdio.h>
-*/
+
 #include <stdlib.h>
 
 char	*ft_strtrim(char const *s1, char const *set);

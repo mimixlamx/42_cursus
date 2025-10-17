@@ -6,13 +6,13 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:41:10 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/14 09:44:19 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/17 15:36:52 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
+
 #include <stdio.h>
-*/
+
 #include <stdlib.h>
 
 char	**ft_split(char const *s, char c);
@@ -21,7 +21,7 @@ char	*string(const char *s, int start, int end);
 int		countc(const char *s, char c);
 
 char	**ft_split(char const *s, char c)
-{
+			{
 	char	**array;
 	int		start;
 	int		end;
@@ -31,14 +31,30 @@ char	**ft_split(char const *s, char c)
 	t = 0;
 	end = 0;
 	array = malloc (countc(s, c) * sizeof(char *));
+	if (array == NULL)
+		return (NULL);
 	while (s[end])
 	{
 		end++;
 		while (s[end] != c && s[end])
 			end++;
-		array[t] = string(s, start, end);
-		start = end + 1;
-		t++;
+		if ((start == 0 && start != c) || ((s[end] == c || s[end] == '\0') && s[start] != c))
+		{
+			array[t] = string(s, start, end);
+			start = end + 1;
+			t++;
+		}
+		if (s[start] == c && s[start + 1] != c)
+		{
+			array[t] = string(s, start + 1, end);
+			start = end + 1;
+			t++;
+		}
+		else if (s[start] == c && s[start + 1] == c)
+		{
+			start++;
+			end++;
+		}
 	}
 	return (array);
 }
@@ -74,28 +90,37 @@ int	lenword(int start, int end)
 int	countc(const char *s, char c)
 {
 	int	count;
+	int	i;
 
+	i = 0;
 	count = 0;
-	while (*s)
+	while (s[i] == c)
 	{
-		s++;
-		while (*s != c && *s)
-			s++;
-		count++;
+		i++;
 	}
+	while (s[i])
+	{
+		i++;;
+		while (s[i] != c && s[i])
+			i++;
+		if (s[i] == c && s[i + 1] != c)
+			count++;
+	}
+	count++;
 	return (count);
+
 }
 /*
 int	main(void)
 {
-	char *s = "I/LOVE/BIG/BLACK";
+	char *s = "i///love/big/black";
 	char c = '/';
 	char **rtn;
 	int count;
 	int	count2;
 
 	count2 = 0;
-	count = countc(s, c);
+	count = 5;
 	rtn = ft_split(s, c);
 	while (count > count2)
 	{

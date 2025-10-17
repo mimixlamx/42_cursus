@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 09:00:46 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/16 11:49:25 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/17 15:56:31 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,9 @@ int	main(void)
 
 	b = "abcdef";
 	l = "abc\375xx";
-	le = 4;
+	le = 30;
 	rtn = ft_strnstr(b, l, le);
 	printf("rtn = %s\n", rtn);
 	return (0);
-}*/
+}
+*/
