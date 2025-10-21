@@ -19,18 +19,19 @@ char	*ft_strrchr(const char *s, int c);
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	len;
+	int					len;
+	unsigned char		ucc;
+	unsigned char		*cucs;
 
+	cucs = (unsigned char *)s;
+	ucc = (unsigned char)c;
 	len = 0;
-	while (*s)
-	{
+	while (cucs[len])
 		len++;
-		s++;
-	}
-	while (*s != c && len > 0)
-		s--;
-	if (*s == c)
-		return ((char *)s);
+	while (cucs[len] != ucc && len > 0)
+		len--;
+	if (cucs[len] == ucc)
+		return ((char *)&cucs[len]);
 	return (NULL);
 }
 /*

@@ -15,38 +15,52 @@
 #include <stddef.h>
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
+int		lenof(const char *src);
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int	tkt;
+	size_t	tkt;
+	size_t	tkt2;
 
+	tkt2 = 0;
 	tkt = 0;
-	while (*dst && size > 0)
-	{
+	while (dst[tkt])
 		tkt++;
-		dst++;
-		size--;
-	}
-	while (size > 1 && *src)
+	if (size <= tkt)
+		return (size + lenof(src));
+	while (size - 1 > tkt && src[tkt2])
 	{
-		*dst = *src;
-		dst++;
-		src++;
+		dst[tkt] = src[tkt2];
 		tkt++;
-		size--;
+		tkt2++;
 	}
-	*dst = '\0';
+	dst[tkt] = '\0';
+	while (src[tkt2])
+	{
+		tkt2++;
+		tkt++;
+	}
 	return (tkt);
 }
+
+int	lenof(const char *src)
+{
+	int	i;
+
+	i = 0;
+	while (src[i])
+		i++;
+	return (i);
+}
+
 /*
 int	main(void)
 {
-	char	dest[10];
-	char	*source = "012345678910";
+	char	dest[4] = "";
+	char	*source = "thx to ntoniolo for this test !";
 	int		len;
 
-	dest[5] = 'a';
-	len = ft_strlcat(dest, source, sizeof(dest));
+	len = ft_strlcat(dest, source, 4);
 	printf("len = %d \n", len);
 	printf("concat = %s \n", dest);
 	return(0);

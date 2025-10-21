@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
+
 #include <stdio.h>
-*/
+
 #include <stddef.h>
 
 void	*ft_memchr(const void *s, int c, size_t n);
@@ -20,24 +20,27 @@ void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	const unsigned char	*tkt;
+	unsigned char		ucc;
 
-	tkt = s;
-	while (n > 0 && *tkt != c)
+	ucc = (const unsigned char)c;
+	tkt = (const unsigned char *)s;
+	
+	while (n > 1 && *tkt != ucc)
 	{
 		n--;
 		tkt++;
 	}
-	if (*tkt == c)
+	if (*tkt == ucc)
 		return ((void *)tkt);
 	return (NULL);
 }
 /*
 int	main(void)
 {
-	char s[10] = "test123c";
-	int c = 'c';
-	int n = 10;
-	unsigned char *rtn = memchrr(s, c, n);
+	char s[10] = "bonjourno";
+	int c = 'n';
+	int n = 2;
+	unsigned char *rtn = ft_memchr(s, c, n);
 	printf ("rtn = %s \n", rtn);
 	return(0);
 }*/

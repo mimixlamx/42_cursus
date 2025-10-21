@@ -18,13 +18,20 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	while (*s1 == *s2 && n > 0 && s1)
+	unsigned char	*ucs1;
+	unsigned char	*ucs2;
+
+	ucs1 = (unsigned char *)s1;
+	ucs2 = (unsigned char *)s2;
+	if (n == 0)
+		return (0);
+	while (*ucs1 == *ucs2 && *ucs1 && n > 1)
 	{
-		s1++;
-		s2++;
+		ucs1++;
+		ucs2++;
 		n--;
 	}
-	return (*s1 - *s2);
+	return (*ucs1 - *ucs2);
 }
 /*
 int	main(void)
