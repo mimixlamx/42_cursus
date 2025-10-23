@@ -14,34 +14,45 @@
 #include <stddef.h>
 
 char	*ft_strnstr(const char *big, const char *little, size_t len);
+size_t	lenfc(unsigned char *str);
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int	cnt;
+	unsigned char	*ucbig;
+	unsigned char	*uclittle;
+	size_t			i;
+	size_t			j;
+	size_t			lenl;
 
-	cnt = 0;
-	if (*little == '\0')
-		return ((char *)big);
-	while (len > 0 && *big)
+	i = 0;
+	j = 0;
+	ucbig = (unsigned char *)big;
+	uclittle = (unsigned char *)little;
+	lenl = lenfc(uclittle);
+	if (uclittle[0] == '\0')
+		return ((char *)ucbig);
+	while (ucbig[j] && len >= j + lenl)
 	{
-		while (*big == *little && *little && len > 0)
-		{
-			big++;
-			little++;
-			cnt++;
-			len--;
-		}
-		if (*little && len > 0 && *big)
-		{
-			little = little - cnt;
-			big = big - cnt + 1;
-			len = len + cnt + -1;
-		}
-		else if (*little == '\0')
-			return ((char *)big - cnt);
+		while (uclittle[i] == ucbig[i + j] && ucbig[j + i] && uclittle[i])
+			i++;
+		if (uclittle[i] == '\0')
+			return ((char *)&ucbig[j]);
+		i = 0;
+		j++;
 	}
 	return (NULL);
 }
+
+size_t	lenfc(unsigned char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
 /*
 int	main(void)
 {
