@@ -10,21 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
 #include <stdio.h>
-*/
+
 #include <stdlib.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+size_t	lenstr(char const *s);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char				*rtn;
-	long unsigned int	i;
+	char	*rtn;
+	size_t	i;
 
+	if (start >= lenstr(s))
+		len = 0;
+	if (len > lenstr(s))
+		len = lenstr(s);
 	i = 0;
-	rtn = malloc (len * sizeof(char));
-	while (s[start + i] && i + 1 < len)
+	rtn = malloc (len + 1 * sizeof(char));
+	if (rtn == NULL)
+		return (NULL);
+	while (len > i && s[start + i])
 	{
 		rtn[i] = s[start + i];
 		i++;
@@ -32,13 +38,24 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	rtn[i] = '\0';
 	return (rtn);
 }
+
+size_t	lenstr(char const *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
 /*
 int	main(void)
 {
-	char *str = "test1234/";
+	char *str = "holla";
 	char *rtn;
 
-	rtn = ft_substr(str, 4, 4);
+	rtn = ft_substr(str, 2, 1);
 	printf ("rtn = %s\n", rtn);
 	free (rtn);
 	rtn = NULL;

@@ -14,6 +14,8 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stddef.h>
+
 //prototypages
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
