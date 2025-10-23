@@ -18,9 +18,12 @@ char	*ft_strchr(const char *s, int c);
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s != c && *s)
+	unsigned char	ucc;
+
+	ucc = (unsigned char)c;
+	while (*s != ucc && *s)
 		s++;
-	if (*s == c)
+	if (*s == ucc)
 		return ((char *)s);
 	return (NULL);
 }
