@@ -18,6 +18,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 int		lenfonc(const char *str);
 int		rtni(char const *s1, char const *set);
 int		rtnj(char const *s1, char const *set);
+char	*tkt(void);
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
@@ -27,14 +28,18 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*rtn;
 	int		i;
 
-	if (s1 == NULL)
+	if (s1 == NULL || set == NULL)
 		return (NULL);
 	i = 0;
 	start = rtni(s1, set);
 	end = rtnj(s1, set);
-	len = end - start + 2;
+	if (start > end)
+		return (tkt());
+	len = end - start + 1;
 	rtn = malloc((len + 1) * sizeof(char));
-	while (len - 1 > i)
+	if (rtn == NULL)
+		return (NULL);
+	while (len > i)
 	{
 		rtn[i] = s1[start + i];
 		i++;
@@ -89,6 +94,15 @@ int	lenfonc(const char *str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+char	*tkt(void)
+{
+	char	*rtn;
+
+	rtn = malloc (1 * sizeof(char));
+	rtn[0] = '\0';
+	return (rtn);
 }
 /*
 int	main(void)
@@ -168,11 +182,11 @@ int	len(const char *str)
 		i++;
 	return (i);
 }
-
+*//*
 int	main(void)
 {
-	char	*s1 = "test1234/";
-	char	*set ="t4";
+	char	*s1 = "  \t \t \n   \n\n\n\t";
+	char	*set =" \t\n";
 	char *rtn;
 
 	rtn = ft_strtrim(s1, set);
