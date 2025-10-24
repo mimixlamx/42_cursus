@@ -6,12 +6,12 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 10:53:46 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/24 14:45:01 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/24 18:20:34 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-
+#include "libft.h"
 #include <stdlib.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
@@ -25,7 +25,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (s == NULL)
 		return (NULL);
 	if (start >= lenstr(s))
-		len = 0;
+		return (ft_strdup("\0"));
 	if (len > lenstr(s + start))
 		len = lenstr(s + start);
 	i = 0;
@@ -50,17 +50,15 @@ size_t	lenstr(char const *s)
 		i++;
 	return (i);
 }
-
 /*
 int	main(void)
 {
-	char *str = "holla";
+	char *str = "hola";
 	char *rtn;
 
-	rtn = ft_substr(str, 2, 1);
+	rtn = ft_substr(str, 40, 0);
 	printf ("rtn = %s\n", rtn);
 	free (rtn);
 	rtn = NULL;
 	return (0);
-}
-*/
+}*/

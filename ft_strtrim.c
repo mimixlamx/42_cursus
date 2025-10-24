@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 14:41:11 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/17 15:37:05 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/24 18:28:21 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ char	*tkt(void)
 	char	*rtn;
 
 	rtn = malloc (1 * sizeof(char));
+	if (rtn == NULL)
+		return (NULL);
 	rtn[0] = '\0';
 	return (rtn);
 }

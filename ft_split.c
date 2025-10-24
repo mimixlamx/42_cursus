@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:41:10 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/24 17:58:43 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/24 19:15:10 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 
 char	**ft_split(char const *s, char c);
-int		lenword(int start, int end);
+void	freememory(char **array, int t);
 char	*string(const char *s, int start, int end);
 int		countc(const char *s, char c);
 char	**rtnarray(char const *s, char c, int end, int start);
@@ -32,10 +32,14 @@ char	**ft_split(char const *s, char c)
 		if (s[0] == '\0')
 		{
 			array = malloc (1 * sizeof(char *));
+			if (array == NULL)
+				return (NULL);
 			array[0] = NULL;
 			return (array);
 		}
 		array = malloc (2 * sizeof(char *));
+		if (array == NULL)
+			return (freememory(array, 1), NULL);
 		array[0] = ft_strdup(s);
 		array[1] = NULL;
 		return (array);
@@ -79,9 +83,13 @@ char	*string(const char *s, int start, int end)
 	int		len;
 	char	*rtn;
 
-	len = lenword(start, end);
+	len = 0;
+	while (start + len < end)
+		len++;
 	i = 0;
 	rtn = malloc((len + 1) * sizeof(char));
+	if (rtn == NULL)
+		return (NULL);
 	while (i < len)
 	{
 		rtn[i] = s[start + i];
@@ -91,14 +99,13 @@ char	*string(const char *s, int start, int end)
 	return (rtn);
 }
 
-int	lenword(int start, int end)
+void	freememory(char **array, int t)
 {
-	int	i;
-
-	i = 0;
-	while (start + i < end)
-		i++;
-	return (i);
+	while (t >= 0)
+	{
+		free(array[t]);
+		t--;
+	}
 }
 
 int	countc(const char *s, char c)
