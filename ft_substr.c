@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 10:53:46 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/09 10:53:49 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/24 14:45:01 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*rtn;
 	size_t	i;
 
+	if (s == NULL)
+		return (NULL);
 	if (start >= lenstr(s))
 		len = 0;
-	if (len > lenstr(s))
-		len = lenstr(s);
+	if (len > lenstr(s + start))
+		len = lenstr(s + start);
 	i = 0;
 	rtn = malloc (len + 1 * sizeof(char));
 	if (rtn == NULL)
