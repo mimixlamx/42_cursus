@@ -6,11 +6,9 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 09:51:01 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/14 11:53:12 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/24 14:34:19 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 #include <stdio.h>
 
 #include <stddef.h>
@@ -19,19 +17,20 @@ void	*ft_memchr(const void *s, int c, size_t n);
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	const unsigned char	*tkt;
-	unsigned char		ucc;
+	const unsigned char	*cucs;
+	unsigned char		cucc;
 
-	ucc = (const unsigned char)c;
-	tkt = (const unsigned char *)s;
-	
-	while (n > 1 && *tkt != ucc)
+	cucc = (const unsigned char)c;
+	cucs = (const unsigned char *)s;
+	if (n == 0)
+		return (NULL);
+	while (n > 1 && *cucs != cucc)
 	{
 		n--;
-		tkt++;
+		cucs++;
 	}
-	if (*tkt == ucc)
-		return ((void *)tkt);
+	if (*cucs == cucc)
+		return ((void *)cucs);
 	return (NULL);
 }
 /*
