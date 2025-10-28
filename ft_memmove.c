@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 10:00:48 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/24 14:09:13 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 10:35:13 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n);
-void	reversemove(unsigned char *d, const unsigned char *s, size_t n);
-void	move(unsigned char *d, const unsigned char *s, size_t n);
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {

@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:55:06 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/14 11:55:30 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 10:34:32 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -18,7 +18,7 @@ size_t	ft_strlen(const char *s);
 
 size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])

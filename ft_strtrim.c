@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 14:41:11 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/24 18:28:21 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 10:39:27 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 int		lenfonc(const char *str);
 int		rtni(char const *s1, char const *set);
 int		rtnj(char const *s1, char const *set);
-char	*tkt(void);
+char	*emptystr(void);
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
@@ -34,7 +34,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	start = rtni(s1, set);
 	end = rtnj(s1, set);
 	if (start > end)
-		return (tkt());
+		return (emptystr());
 	len = end - start + 1;
 	rtn = malloc((len + 1) * sizeof(char));
 	if (rtn == NULL)
@@ -96,7 +96,7 @@ int	lenfonc(const char *str)
 	return (i);
 }
 
-char	*tkt(void)
+char	*emptystr(void)
 {
 	char	*rtn;
 
