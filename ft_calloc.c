@@ -6,12 +6,10 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 10:49:02 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 13:53:58 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 16:49:01 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-/*
-#include <stdio.h>
-*/
+
 #include <stdlib.h>
 /*
  ** need stdlib for the malloc
@@ -34,22 +32,3 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	}
 	return (array);
 }
-/*
-int main(void)
-{
-	int size = 10;
-	int *rtnarray;
-	int i = 0;
-
-	rtnarray = ft_calloc(size, 8);
-	printf("result =");
-	while (size > i)
-	{
-		printf(" %d", rtnarray[i]);
-		i++;
-	}
-	free(rtnarray);
-	rtnarray = NULL;
-	return (0);
-}
-*/

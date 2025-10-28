@@ -6,12 +6,10 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 10:03:43 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 15:29:08 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 16:54:41 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-/*
-#include <stdio.h>
-*/
+
 #include <stddef.h>
 /*
 ** need stddef for size_t
@@ -51,16 +49,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	}
 	return (i);
 }
-
-/*
-int	main(void)
-{
-	char	dest[4] = "";
-	char	*source = "thx to ntoniolo for this test !";
-	int		len;
-
-	len = ft_strlcat(dest, source, 4);
-	printf("len = %d \n", len);
-	printf("concat = %s \n", dest);
-	return(0);
-}*/

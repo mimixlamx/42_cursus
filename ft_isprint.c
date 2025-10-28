@@ -6,11 +6,9 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:41:37 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 13:33:11 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 16:50:15 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-
-//#include <unistd.h>
 
 int	ft_isprint(int c)
 {
@@ -18,14 +16,3 @@ int	ft_isprint(int c)
 		return (1);
 	return (0);
 }
-/*
-int	main(void)
-{
-	int	c;
-	int	tkt;
-
-	c = 30;
-	tkt = isprint(c);
-	write (1, &tkt, 1);
-}
-*/

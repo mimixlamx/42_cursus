@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:49:05 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 14:24:26 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 16:52:54 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -24,9 +24,3 @@ void	ft_putstr_fd(char *s, int fd)
 		i++;
 	}
 }
-/*
-int	main(void)
-{
-	ft_putendl_fd("tkt1234/", 1);
-	return (0);
-}*/

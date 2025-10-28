@@ -6,12 +6,10 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 14:41:11 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 15:30:50 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 16:57:20 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-/*
-#include <stdio.h>
-*/
+
 #include <stdlib.h>
 /*
 ** need stdlib for malloc and NULL
@@ -103,92 +101,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	rtn[i] = '\0';
 	return (rtn);
 }
-/*
-int	main(void)
-{
-	char	*s1 = "-+-+-+test1234/+-+-+-";
-	char	*set = "-4+";
-	char	*rtn;
-
-	rtn = ft_strtrim(s1, set);
-	printf ("rtn = %s\n", rtn);
-	free (rtn);
-	rtn = NULL;
-	return (0);
-}
-*/
-/*
-char	*ft_strtrim(char const *s1, char const *set);
-int		len(const char *str);
-char	*rtntmp(const char *s1);
-char	*erasetemp(char *temp, int i);
-
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	char	*temp;
-	int		i;
-	int		i2;
-
-	temp = rtntmp(s1);
-	while (set[i])
-	{
-		while (temp[i2])
-		{
-			if (temp[i2] == set[i])
-			{
-				temp = erasetemp(temp, i2);
-				i2 = 0;
-			}
-			else
-			i2++;
-		}
-		i2 = 0;
-		i++;
-	}
-	return (temp);
-}
-
-char	*erasetemp(char *temp, int i)
-{
-	while (temp[i])
-	{
-		temp[i] = temp[i + 1];
-		i++;
-	}
-	return (temp);
-}
-
-char	*rtntmp(const char *s1)
-{
-	char	*temp;
-	int		i;
-
-	i = 0;
-	temp = malloc (len(s1)* sizeof(char));
-	while (s1[i])
-	{
-		temp[i] = s1[i];
-		i++;
-	}
-	return (temp);
-}
-int	len(const char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-*//*
-int	main(void)
-{
-	char	*s1 = "  \t \t \n   \n\n\n\t";
-	char	*set =" \t\n";
-	char *rtn;
-
-	rtn = ft_strtrim(s1, set);
-	printf("rtn = %s\n", rtn);
-}
-*/

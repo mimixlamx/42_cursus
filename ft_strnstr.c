@@ -6,12 +6,9 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 09:00:46 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 15:29:38 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 16:55:50 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-/*
-#include <stdio.h>
-*/
 #include <stddef.h>
 /*
 ** need stddef for size_t
@@ -52,20 +49,3 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return (NULL);
 }
-
-/*
-int	main(void)
-{
-	char	*b;
-	char	*l;
-	size_t	le;
-	char	*rtn;
-
-	b = "abcdef";
-	l = "abc\375xx";
-	le = 30;
-	rtn = ft_strnstr(b, l, le);
-	printf("rtn = %s\n", rtn);
-	return (0);
-}
-*/

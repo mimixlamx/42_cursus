@@ -6,15 +6,12 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 09:49:11 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 15:25:20 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 16:55:39 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stddef.h>
 /*
 ** need stddef for size_t
-*/
-/*
-#include <stdio.h>
 */
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -33,14 +30,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (*ucs1 - *ucs2);
 }
-/*
-int	main(void)
-{
-	int	rtn = 0;
-	const char *str1 = "test123";
-	const char *str2 = "";
-	rtn = strncmpp(str1, str2, 2);
-	printf ("rtn = %d\n", rtn);
-	return (0);
-}
-*/

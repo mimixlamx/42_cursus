@@ -6,12 +6,10 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 09:48:13 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 15:22:15 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 16:54:56 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-/*
-#include <stdio.h>
-*/
+
 #include <stddef.h>
 /*
 ** need stddef for size_t
@@ -40,19 +38,3 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	*dst = '\0';
 	return (tkt);
 }
-/*
-int	main(void)
-{
-	char dest[50];
-	const char *source = "aaa";
-	unsigned long int len;
-
-	len = ft_strlcpy(dest, source, 0);
-	printf ("dest = %s \n", dest);
-	printf ("len = %ld \n", len);
-	if (len >= sizeof(dest))
-		printf ("moins de bytes que a l'origine");
-	else
-		printf ("meme nombres de bites");
-	return (0);
-}*/

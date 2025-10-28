@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:36:37 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 14:14:43 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 16:50:35 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 /*
 ** need stdlib for the malloc
 */
-//#include <stdio.h>
 
 static	int	lenn(long int n)
 {
@@ -85,67 +84,3 @@ char	*ft_itoa(int n)
 	rtn = final(rtn, ln, i, j);
 	return (rtn);
 }
-/*
-int	main(void)
-{
-	int		n;
-	char	*rtnvalue;
-
-	n = 0;
-	rtnvalue = ft_itoa(n);
-	printf ("rtnvalue = %s\n", rtnvalue);
-	free (rtnvalue);
-	rtnvalue = NULL;
-	return (0);
-}
-*/
-//int		completion(int n);
-//int		divalue(int n);
-/*
-char	*ft_itoa(int n)
-{
-	char	*rtn;
-	int		i;
-
-	rtn = lenn(n);
-	i = 0;
-	if (n < 0)
-	{
-		rtn[i] = '-';
-		n = n * -1;
-		i++;
-	}
-	while (n >= 10)
-	{
-		rtn[i] = completion(n) + '0';
-		i++;
-		n = n % divalue(n);
-	}
-	rtn[i] = n + '0';
-	i++;
-	rtn[i] = '\0';
-	return (rtn);
-}
-*
-int	divalue(int n)
-{
-	int	div;
-
-	div = 1;
-	while (n >= 10)
-	{
-		div = div * 10;
-		n = n / 10;
-	}
-	return (div);
-}
-
-int	completion(int n)
-{
-	while (n >= 10)
-	{
-		n = n / 10;
-	}
-	return (n);
-}
-*/

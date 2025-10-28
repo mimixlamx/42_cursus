@@ -6,12 +6,10 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 10:45:16 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 15:29:00 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 16:54:27 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-/*
-#include <stdio.h>
-*/
+
 #include <stdlib.h>
 /*
 ** need stdlib for malloc
@@ -56,16 +54,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	rtn[len + len2] = '\0';
 	return (rtn);
 }
-/*
-int	main(void)
-{
-	char	*s1 = "test";
-	char	*s2 = "1234/";
-	char	*rtn;
-
-	rtn = ft_strjoin(s1, s2);
-	printf ("rtn = %s\n", rtn);
-	free (rtn);
-	rtn = NULL;
-	return (0);
-}*/

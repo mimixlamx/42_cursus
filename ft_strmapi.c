@@ -6,13 +6,10 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:37:47 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 15:29:21 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 16:55:27 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-#include <stdio.h>
-*/
 #include <stdlib.h>
 /*
 ** need stdlib for malloc
@@ -45,19 +42,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	rtn[i] = '\0';
 	return (rtn);
 }
-/*
-char	fon(unsigned int i, char c)
-{
-	return (c + i);
-}
-
-int	main (void)
-{
-	char *rtn;
-
-	rtn = ft_strmapi("test", fon);
-	printf ("rtn = %s\n", rtn);
-	free(rtn);
-	rtn = NULL;
-	return (0);
-}*/

@@ -6,12 +6,10 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 10:53:46 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 15:31:59 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 16:57:31 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-/*
-#include <stdio.h>
-*/
+
 #include "libft.h"
 #include <stdlib.h>
 /*
@@ -52,15 +50,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	rtn[i] = '\0';
 	return (rtn);
 }
-/*
-int	main(void)
-{
-	char *str = "hola";
-	char *rtn;
-
-	rtn = ft_substr(str, 40, 0);
-	printf ("rtn = %s\n", rtn);
-	free (rtn);
-	rtn = NULL;
-	return (0);
-}*/

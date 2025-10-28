@@ -6,11 +6,10 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:41:10 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 16:41:52 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 16:53:25 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
 #include "libft.h"
 #include <stdlib.h>
 /*
@@ -38,18 +37,6 @@ static	char	*string(const char *s, int start, int end)
 	rtn[i] = '\0';
 	return (rtn);
 }
-/*
-static	void	freememory(char **array, int t)
-{
-	while (t >= 0)
-	{
-		free(array[t]);
-		t--;
-	}
-	free(array);
-	array = NULL;
-}
-*/
 
 static	int	countc(const char *s, char c)
 {
@@ -128,24 +115,3 @@ char	**ft_split(char const *s, char c)
 	array = rtnarray(s, c, end, start);
 	return (array);
 }
-
-/*
-int	main(void)
-{
-	char *s = "\0non\0empty";
-	char c = '\0';
-	char **rtn;
-	int count;
-	int	count2;
-
-	count2 = 0;
-	count = 2;
-	rtn = ft_split(s, c);
-	while (count > count2)
-	{
-		printf ("rtn[%d] = %s\n", count2, rtn[count2]);
-		count2++;
-	}
-	free (rtn);
-	rtn = NULL;
-}*/
