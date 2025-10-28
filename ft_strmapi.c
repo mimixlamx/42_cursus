@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:37:47 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/14 13:29:43 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 15:29:21 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,19 @@
 #include <stdio.h>
 */
 #include <stdlib.h>
+/*
+** need stdlib for malloc
+*/
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-int		lens(char const *s);
+static	int	lens(char const *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
@@ -34,16 +44,6 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	}
 	rtn[i] = '\0';
 	return (rtn);
-}
-
-int	lens(char const *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
 }
 /*
 char	fon(unsigned int i, char c)

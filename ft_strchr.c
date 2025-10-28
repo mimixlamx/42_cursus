@@ -6,16 +6,17 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 10:01:57 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/16 14:12:09 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 14:47:46 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-
+/*
 #include <unistd.h>
 #include <stdio.h>
+*/
 #include <stddef.h>
-
-char	*ft_strchr(const char *s, int c);
-
+/*
+** need stddef for NULL
+*/
 char	*ft_strchr(const char *s, int c)
 {
 	unsigned char	ucc;

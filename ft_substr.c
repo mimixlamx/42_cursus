@@ -6,16 +6,28 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 10:53:46 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/24 18:20:34 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 15:31:59 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-
+/*
 #include <stdio.h>
+*/
 #include "libft.h"
 #include <stdlib.h>
+/*
+** need libft for ft_strdup
+** need stdlib for NULL
+*/
 
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-size_t	lenstr(char const *s);
+static	size_t	lenstr(char const *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -39,16 +51,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	rtn[i] = '\0';
 	return (rtn);
-}
-
-size_t	lenstr(char const *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
 }
 /*
 int	main(void)

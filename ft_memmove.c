@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 10:00:48 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 10:35:13 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 14:20:47 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 #include <stdio.h>
 */
 #include <stddef.h>
+/*
+** need stddef for the size_t
+*/
 #include "libft.h"
-
-void	*ft_memmove(void *dest, const void *src, size_t n);
-
+/*
+** need libft for ft_memcpy
+*/
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char		*d;

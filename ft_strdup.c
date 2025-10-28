@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 10:51:43 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/14 13:11:11 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 14:48:46 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <stdio.h>
 */
 #include <stdlib.h>
-
-char	*ft_strdup(const char *s);
-
+/*
+** need stdlib for null and malloc
+*/
 char	*ft_strdup(const char *s)
 {
 	int		len;

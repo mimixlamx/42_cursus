@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 09:57:36 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/14 11:53:31 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 14:17:30 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 #include <stdio.h>
 */
 #include <stddef.h>
-
-int	ft_memcmp(const void *s1, const void *s2, size_t n);
-
+/*
+** need stddef for the size_t
+*/
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const unsigned char	*t1;
-	const unsigned char	*t2;
+	const unsigned char	*cucs1;
+	const unsigned char	*cucs2;
 
 	if (n == 0)
 		return (0);
-	t1 = s1;
-	t2 = s2;
-	while (*t1 == *t2 && n > 1)
+	cucs1 = (const unsigned char *)s1;
+	cucs2 = (const unsigned char *)s2;
+	while (*cucs1 == *cucs2 && n > 1)
 	{
-		t1++;
-		t2++;
+		cucs1++;
+		cucs2++;
 		n--;
 	}
-	return (*t1 - *t2);
+	return (*cucs1 - *cucs2);
 }
 /*
 int	main(void)

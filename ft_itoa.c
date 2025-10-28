@@ -6,18 +6,17 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:36:37 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/17 13:21:14 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 14:14:43 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
+/*
+** need stdlib for the malloc
+*/
+//#include <stdio.h>
 
-char	*ft_itoa(int n);
-int		lenn(long int n);
-char	*final(char *rtn, long int n, int i, int j);
-
-int	lenn(long int n)
+static	int	lenn(long int n)
 {
 	int		i;
 
@@ -36,33 +35,7 @@ int	lenn(long int n)
 	return (i);
 }
 
-char	*ft_itoa(int n)
-{
-	int			len;
-	char		*rtn;
-	int			i;
-	int			j;
-	long int	nn;
-
-	nn = n;
-	i = 0;
-	j = 0;
-	len = lenn(nn);
-	rtn = malloc (len + 1 * sizeof(char));
-	if (rtn == NULL)
-		return (NULL);
-	if (nn < 0)
-	{
-		rtn[i] = '-';
-		nn = nn * -1;
-		i++;
-		j++;
-	}
-	rtn = final(rtn, nn, i, j);
-	return (rtn);
-}
-
-char	*final(char *rtn, long int n, int i, int j)
+static	char	*final(char *rtn, long int n, int i, int j)
 {
 	char	tmp;
 
@@ -84,6 +57,32 @@ char	*final(char *rtn, long int n, int i, int j)
 		i--;
 		j++;
 	}
+	return (rtn);
+}
+
+char	*ft_itoa(int n)
+{
+	int			len;
+	char		*rtn;
+	int			i;
+	int			j;
+	long int	ln;
+
+	ln = n;
+	i = 0;
+	j = 0;
+	len = lenn(ln);
+	rtn = malloc (len + 1 * sizeof(char));
+	if (rtn == NULL)
+		return (NULL);
+	if (ln < 0)
+	{
+		rtn[i] = '-';
+		ln = ln * -1;
+		i++;
+		j++;
+	}
+	rtn = final(rtn, ln, i, j);
 	return (rtn);
 }
 /*

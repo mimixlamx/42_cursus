@@ -6,14 +6,16 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 10:49:02 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/17 16:49:05 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 13:53:58 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
+/*
 #include <stdio.h>
+*/
 #include <stdlib.h>
-
-void	*ft_calloc(size_t nmemb, size_t size);
-
+/*
+ ** need stdlib for the malloc
+*/
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	char		*array;

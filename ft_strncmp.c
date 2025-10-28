@@ -6,16 +6,16 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 09:49:11 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/14 11:55:48 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 15:25:20 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <stddef.h>
+/*
+** need stddef for size_t
+*/
 /*
 #include <stdio.h>
 */
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
-
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	unsigned char	*ucs1;

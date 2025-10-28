@@ -6,49 +6,72 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:41:10 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/24 19:15:10 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 16:41:52 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+
+//#include <stdio.h>
 #include "libft.h"
 #include <stdlib.h>
-
-char	**ft_split(char const *s, char c);
-void	freememory(char **array, int t);
-char	*string(const char *s, int start, int end);
-int		countc(const char *s, char c);
-char	**rtnarray(char const *s, char c, int end, int start);
-
-char	**ft_split(char const *s, char c)
+/*
+** need stdlib for malloc
+** need libft for ft_strdup
+*/
+static	char	*string(const char *s, int start, int end)
 {
-	char	**array;
-	int		start;
-	int		end;
+	int		i;
+	int		len;
+	char	*rtn;
 
-	start = 0;
-	end = start;
-	if (c == '\0')
+	len = 0;
+	while (start + len < end)
+		len++;
+	i = 0;
+	rtn = malloc((len + 1) * sizeof(char));
+	if (rtn == NULL)
+		return (NULL);
+	while (i < len)
 	{
-		if (s[0] == '\0')
-		{
-			array = malloc (1 * sizeof(char *));
-			if (array == NULL)
-				return (NULL);
-			array[0] = NULL;
-			return (array);
-		}
-		array = malloc (2 * sizeof(char *));
-		if (array == NULL)
-			return (freememory(array, 1), NULL);
-		array[0] = ft_strdup(s);
-		array[1] = NULL;
-		return (array);
+		rtn[i] = s[start + i];
+		i++;
 	}
-	array = rtnarray(s, c, end, start);
-	return (array);
+	rtn[i] = '\0';
+	return (rtn);
+}
+/*
+static	void	freememory(char **array, int t)
+{
+	while (t >= 0)
+	{
+		free(array[t]);
+		t--;
+	}
+	free(array);
+	array = NULL;
+}
+*/
+
+static	int	countc(const char *s, char c)
+{
+	int	count;
+	int	i;
+
+	i = 0;
+	count = 0;
+	while (s[i])
+	{
+		while (s[i] == c)
+			i++;
+		if (s[i] == '\0')
+			return (count);
+		count++;
+		while (s[i] != c && s[i])
+			i++;
+	}
+	return (count);
 }
 
-char	**rtnarray(char const *s, char c, int e, int st)
+static	char	**rtnarray(char const *s, char c, int e, int st)
 {
 	char	**array;
 	int		t;
@@ -77,56 +100,35 @@ char	**rtnarray(char const *s, char c, int e, int st)
 	return (array);
 }
 
-char	*string(const char *s, int start, int end)
+char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		len;
-	char	*rtn;
+	char	**array;
+	int		start;
+	int		end;
 
-	len = 0;
-	while (start + len < end)
-		len++;
-	i = 0;
-	rtn = malloc((len + 1) * sizeof(char));
-	if (rtn == NULL)
-		return (NULL);
-	while (i < len)
+	start = 0;
+	end = 0;
+	if (c == '\0')
 	{
-		rtn[i] = s[start + i];
-		i++;
+		if (s[0] == '\0')
+		{
+			array = malloc(1 * sizeof(char *));
+			if (array == NULL)
+				return (NULL);
+			array[0] = NULL;
+			return (array);
+		}
+		array = malloc (2 * sizeof(char *));
+		if (array == NULL)
+			return (NULL);
+		array[0] = ft_strdup(s);
+		array[1] = NULL;
+		return (array);
 	}
-	rtn[i] = '\0';
-	return (rtn);
+	array = rtnarray(s, c, end, start);
+	return (array);
 }
 
-void	freememory(char **array, int t)
-{
-	while (t >= 0)
-	{
-		free(array[t]);
-		t--;
-	}
-}
-
-int	countc(const char *s, char c)
-{
-	int	count;
-	int	i;
-
-	i = 0;
-	count = 0;
-	while (s[i])
-	{
-		while (s[i] == c)
-			i++;
-		if (s[i] == '\0')
-			return (count);
-		count++;
-		while (s[i] != c && s[i])
-			i++;
-	}
-	return (count);
-}
 /*
 int	main(void)
 {

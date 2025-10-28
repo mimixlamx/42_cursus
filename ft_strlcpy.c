@@ -6,15 +6,16 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 09:48:13 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/17 17:01:36 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 15:22:15 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-
+/*
 #include <stdio.h>
-
+*/
 #include <stddef.h>
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+/*
+** need stddef for size_t
+*/
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {

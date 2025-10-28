@@ -6,15 +6,17 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 09:51:01 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/24 14:34:19 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 13:57:46 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
+/*
 #include <stdio.h>
+*/
 
 #include <stddef.h>
-
-void	*ft_memchr(const void *s, int c, size_t n);
-
+/*
+** need stddef for the size_t
+*/
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	const unsigned char	*cucs;

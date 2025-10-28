@@ -6,16 +6,17 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:38:37 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/14 09:39:47 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 14:50:00 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
-
+/*
+** need stddef for NULL
+*/
 /*
 #include <stdio.h>
 */
-void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {

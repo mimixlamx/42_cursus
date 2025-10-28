@@ -6,16 +6,16 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:55:06 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 10:34:32 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 15:22:42 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 /*
 #include <stdio.h>
 */
 #include <stddef.h>
-
-size_t	ft_strlen(const char *s);
-
+/*
+** need stddef for size_t
+*/
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;

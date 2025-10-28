@@ -6,13 +6,13 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:49:05 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/14 09:56:31 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 13:57:02 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
-
-void	ft_putendl_fd(char *s, int fd);
-
+/*
+** need unistd for the write
+*/
 void	ft_putendl_fd(char *s, int fd)
 {
 	int	i;

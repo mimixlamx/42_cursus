@@ -6,19 +6,75 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 14:41:11 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 10:39:27 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 15:30:50 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-
+/*
 #include <stdio.h>
-
+*/
 #include <stdlib.h>
+/*
+** need stdlib for malloc and NULL
+*/
 
-char	*ft_strtrim(char const *s1, char const *set);
-int		lenfonc(const char *str);
-int		rtni(char const *s1, char const *set);
-int		rtnj(char const *s1, char const *set);
-char	*emptystr(void);
+static	int	rtni(char const *s1, char const *set)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (set[j])
+	{
+		while (s1[i] == set[j])
+		{
+			i++;
+			j = 0;
+		}
+		j++;
+	}
+	return (i);
+}
+
+static	int	lenfonc(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+static	int	rtnj(char const *s1, char const *set)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	i = lenfonc(s1) - 1;
+	while (set[j])
+	{
+		while (s1[i] == set[j])
+		{
+			i--;
+			j = 0;
+		}
+		j++;
+	}
+	return (i);
+}
+
+static	char	*emptystr(void)
+{
+	char	*rtn;
+
+	rtn = malloc (1 * sizeof(char));
+	if (rtn == NULL)
+		return (NULL);
+	rtn[0] = '\0';
+	return (rtn);
+}
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
@@ -45,65 +101,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 		i++;
 	}
 	rtn[i] = '\0';
-	return (rtn);
-}
-
-int	rtni(char const *s1, char const *set)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (set[j])
-	{
-		while (s1[i] == set[j])
-		{
-			i++;
-			j = 0;
-		}
-		j++;
-	}
-	return (i);
-}
-
-int	rtnj(char const *s1, char const *set)
-{
-	int	i;
-	int	j;
-
-	j = 0;
-	i = lenfonc(s1) - 1;
-	while (set[j])
-	{
-		while (s1[i] == set[j])
-		{
-			i--;
-			j = 0;
-		}
-		j++;
-	}
-	return (i);
-}
-
-int	lenfonc(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*emptystr(void)
-{
-	char	*rtn;
-
-	rtn = malloc (1 * sizeof(char));
-	if (rtn == NULL)
-		return (NULL);
-	rtn[0] = '\0';
 	return (rtn);
 }
 /*

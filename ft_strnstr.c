@@ -6,15 +6,25 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 09:00:46 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/17 15:56:31 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/10/28 15:29:38 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-
+/*
 #include <stdio.h>
+*/
 #include <stddef.h>
+/*
+** need stddef for size_t
+*/
+static	size_t	lenfc(unsigned char *str)
+{
+	size_t	i;
 
-char	*ft_strnstr(const char *big, const char *little, size_t len);
-size_t	lenfc(unsigned char *str);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
@@ -41,16 +51,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		j++;
 	}
 	return (NULL);
-}
-
-size_t	lenfc(unsigned char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
 }
 
 /*
