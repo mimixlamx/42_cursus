@@ -25,6 +25,22 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(nbr % 10, fd);
 	}
 }
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		write (fd, &s[i], 1);
+		i++;
+	}
+}
 
 int	ft_printf(const char *str, ...)
 {
@@ -38,10 +54,28 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%' && str[i + 1] == 'd')
 		{
 			ft_putnbr_fd(va_arg(args, int), 1);
-			i = i + 2;
+			i += 2;
 		}
-	write (1, &str[i], 1);
-	i++;
+		else if (str[i] == '%' && str[i + 1] == 'c')
+		{
+			ft_putchar(va_arg(args, int));
+			i += 2;
+		}
+		else if (str[i] == '%' && str[i + 1] == 's')
+		{
+			ft_putstr_fd(va_arg(args, char *), 1);
+			i += 2;
+		}
+		else if (str[i] == '%' && str[i + 1] == '%')
+		{
+			ft_putchar('%');
+			i += 2;
+		}
+		else if (str[i] && str[i] != '%')
+		{
+			write (1, &str[i], 1);
+			i++;
+		}
 	}
 	va_end(args);
 	return (0);
@@ -49,7 +83,12 @@ int	ft_printf(const char *str, ...)
 
 int	main(void)
 {
-	int	d;
+	int		d;
+	char	c;
+	char	*str;
+
+	str = "c'est déja bien hein";
 	d = 15;
-	ft_printf("test %d", d);
+	c = 's';
+	ft_printf("%d%c %s%%", d, c, str);
 }
