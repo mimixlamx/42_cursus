@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/03 09:55:27 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 16:57:58 by mbruyere         ###   ####lausanne.ch   */
+/*   Created: 2025/11/03 14:39:21 by mbruyere          #+#    #+#             */
+/*   Updated: 2025/11/03 17:22:37 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int c)
-{
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	else
-		return (c);
-}
+/*
+** double define protection
+*/
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+
+int	ft_printf(const char *str, ...);
+int	ft_putnbr_base(int n, char *base, int i);
+int	ft_putnbr(int n, int i);
+int	ft_putunsigned(int n, int i);
+int	ft_putchar(char c);
+int	ft_putstr(char *str);
+/*
+** end
+*/
+#endif

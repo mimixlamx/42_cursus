@@ -1,94 +1,102 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/03 14:38:12 by mbruyere          #+#    #+#             */
+/*   Updated: 2025/11/03 17:56:33 by mbruyere         ###   ####lausanne.ch   */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
 #include <stdarg.h>
 #include <unistd.h>
+
 /*
 ** need stdarg for va_list...
+** need unistd for write
 */
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	long int	nbr;
-
-	nbr = n;
-	if (nbr < 0)
-	{
-		write (fd, "-", 1);
-		nbr = nbr * -1;
-	}
-	if (nbr >= 0 && nbr <= 9)
-	{
-		nbr = nbr + '0';
-		write(fd, &nbr, 1);
-	}
-	else if (nbr >= 10)
-	{
-		ft_putnbr_fd(nbr / 10, fd);
-		ft_putnbr_fd(nbr % 10, fd);
-	}
-}
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		write (fd, &s[i], 1);
-		i++;
-	}
-}
 
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
-	int i;
+	int		i;
+	int		cnt;
 
+	cnt = 0;
 	i = 0;
-	va_start(args,  str);
+	va_start(args, str);
 	while (str[i])
 	{
-		if (str[i] == '%' && str[i + 1] == 'd')
+		if (str[i] == '%' && (str[i + 1] == 'd' || str[i +1] == 'i'))
 		{
-			ft_putnbr_fd(va_arg(args, int), 1);
+			cnt += ft_putnbr(va_arg(args, int), 0);
+			i += 2;
+		}
+		else if (str[i] == '%' && str[i + 1] == 'u')
+		{
+			cnt += ft_putunsigned(va_arg(args, unsigned int), 0);
 			i += 2;
 		}
 		else if (str[i] == '%' && str[i + 1] == 'c')
 		{
-			ft_putchar(va_arg(args, int));
+			cnt += ft_putchar(va_arg(args, int));
 			i += 2;
 		}
 		else if (str[i] == '%' && str[i + 1] == 's')
 		{
-			ft_putstr_fd(va_arg(args, char *), 1);
+			cnt += ft_putstr(va_arg(args, char *)) - 1;
 			i += 2;
 		}
 		else if (str[i] == '%' && str[i + 1] == '%')
 		{
-			ft_putchar('%');
+			cnt += ft_putchar('%');
+			i += 2;
+		}
+		else if (str[i] == '%' && str[i + 1] == 'x')
+		{
+			cnt += ft_putnbr_base(va_arg(args, int), "0123456789abcdef", 0);
+			i += 2;
+		}
+		else if (str[i] == '%' && str[i + 1] == 'X')
+		{
+			cnt += ft_putnbr_base(va_arg(args, int), "0123456789ABCDEF", 0);
+			i += 2;
+		}
+		else if (str[i] == '%' && str[i + 1] == 'p')
+		{
+			cnt += ft_putptr(va_arg(args, void *), 0);
 			i += 2;
 		}
 		else if (str[i] && str[i] != '%')
 		{
 			write (1, &str[i], 1);
 			i++;
+			cnt++;
 		}
 	}
 	va_end(args);
-	return (0);
+	return (cnt);
 }
-
+/*
 int	main(void)
 {
-	int		d;
-	char	c;
-	char	*str;
+	int				d;
+	char			c;
+	char			*str;
+	int				i;
+	unsigned int	u;
+	int				x;
+	int				X;
 
 	str = "c'est déja bien hein";
 	d = 15;
 	c = 's';
-	ft_printf("%d%c %s%%", d, c, str);
-}
+	i = 10;
+	u = 4294967295;
+	x = 346;
+	X = 346;
+	ft_printf("%d", ft_printf("%d%c %s%%%i%u%x%X", d, c, str, i, u, x, X));
+}*/

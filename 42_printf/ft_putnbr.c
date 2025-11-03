@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/03 09:57:36 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 16:51:12 by mbruyere         ###   ####lausanne.ch   */
+/*   Created: 2025/11/03 16:08:48 by mbruyere          #+#    #+#             */
+/*   Updated: 2025/11/03 16:57:06 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
 
-#include <stddef.h>
-/*
-** need stddef for the size_t
-*/
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_putnbr(int n, int i)
 {
-	const unsigned char	*cucs1;
-	const unsigned char	*cucs2;
+	long int	nbr;
 
-	if (n == 0)
-		return (0);
-	cucs1 = (const unsigned char *)s1;
-	cucs2 = (const unsigned char *)s2;
-	while (*cucs1 == *cucs2 && n > 1)
+	nbr = n;
+	if (nbr < 0)
 	{
-		cucs1++;
-		cucs2++;
-		n--;
+		write (1, "-", 1);
+		nbr = nbr * -1;
+		i++;
 	}
-	return (*cucs1 - *cucs2);
+	if (nbr >= 0 && nbr <= 9)
+	{
+		nbr += '0';
+		write (1, &nbr, 1);
+		i++;
+	}
+	else
+	{
+		i = i + ft_putnbr(nbr / 10, 0);
+		i = i + ft_putnbr(nbr % 10, 0);
+	}
+	return (i);
 }

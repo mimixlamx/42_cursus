@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 13:55:06 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 16:55:12 by mbruyere         ###   ####lausanne.ch   */
+/*   Created: 2025/11/03 16:43:01 by mbruyere          #+#    #+#             */
+/*   Updated: 2025/11/03 16:57:53 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
 
-#include <stddef.h>
-/*
-** need stddef for size_t
-*/
-size_t	ft_strlen(const char *s)
+int	ft_putstr(char *str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (s[i])
+	while (str[i])
+	{
+		write (1, &str[i], 1);
 		i++;
+	}
 	return (i);
 }

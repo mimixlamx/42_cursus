@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putunsigned.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/03 09:57:54 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 16:51:37 by mbruyere         ###   ####lausanne.ch   */
+/*   Created: 2025/11/03 15:51:43 by mbruyere          #+#    #+#             */
+/*   Updated: 2025/11/03 16:44:45 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
-/*
-** need stddef for the size_t
-*/
+#include <unistd.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int	ft_putunsigned(int n, int i)
 {
-	unsigned char		*d;
-	const unsigned char	*s;
+	unsigned int	nbr;
 
-	if (dest == NULL && src == NULL)
-		return (NULL);
-	d = (unsigned char *)dest;
-	s = (const unsigned char *)src;
-	while (n > 0)
+	nbr = n;
+	if (nbr <= 9)
 	{
-		*d = *s;
-		d++;
-		s++;
-		n--;
+		nbr = nbr + '0';
+		write(1, &nbr, 1);
+		i++;
 	}
-	return (dest);
+	else if (nbr >= 10)
+	{
+		i += ft_putunsigned(nbr / 10, 0);
+		i += ft_putunsigned(nbr % 10, 0);
+	}
+	return (i);
 }

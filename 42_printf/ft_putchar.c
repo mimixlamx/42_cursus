@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 15:30:24 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/10/28 16:58:13 by mbruyere         ###   ####lausanne.ch   */
+/*   Created: 2025/11/03 16:28:29 by mbruyere          #+#    #+#             */
+/*   Updated: 2025/11/03 16:57:31 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
-/*
-** need stddef for the size_t
-*/
-void	*ft_memset(void *s, int c, size_t n)
-{
-	unsigned char	*ucs;
+#include <unistd.h>
 
-	ucs = (unsigned char *)s;
-	while (n > 0)
-	{
-		*ucs = c;
-		n--;
-		ucs++;
-	}
-	return (s);
+int	ft_putchar(char c)
+{
+	write (1, &c, 1);
+	return (1);
 }
