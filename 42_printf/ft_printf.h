@@ -17,11 +17,12 @@
 # define FT_PRINTF_H
 
 int	ft_printf(const char *str, ...);
-int	ft_putnbr_base(int n, char *base, int i);
+int	ft_putnbr_base(unsigned long nbr, char *base, int i);
 int	ft_putnbr(int n, int i);
 int	ft_putunsigned(int n, int i);
 int	ft_putchar(char c);
 int	ft_putstr(char *str);
+int	ft_putvoidptr(void *ptr, int i);
 /*
 ** end
 */

@@ -1,16 +1,22 @@
 #include <unistd.h>
 #include "ft_printf.h"
 
-int	ft_putvoidptr(void *ptr)
+int	ft_putvoidptr(void *ptr, int i)
 {
-	write(1,"x0", 2);
-	ft_putnbr_base(&(int)*ptr, "0123456789ABCDEF", 0);
-	return (2);
+	if (ptr == 0)
+	{
+		write(1, "0x0", 3);
+		return (3);
+	}
+	write(1, "0x", 2);
+	i = ft_putnbr_base((unsigned long)ptr, "0123456789abcdef", 0);
+	return (i + 2);
 }
-
+/*
 int	main(void)
 {
-	void *test;
+	int i = 42;
+	void *test = &i;
 
-	ft_putvoidptr((void *)test);
-}
+	ft_putvoidptr(test, i);
+}*/

@@ -7,7 +7,8 @@ SRC	= ft_printf.c \
 	ft_putnbr.c \
 	ft_putunsigned.c \
 	ft_putchar.c \
-	ft_putstr.c
+	ft_putstr.c \
+	ft_putvoidptr.c
 
 OBJ_FILES = $(SRC:.c=.o)
 
