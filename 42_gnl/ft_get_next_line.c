@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   ft_putvoidptr.c                                     :+:    :+:           */
+/*   ft_get_next_line.c                                  :+:    :+:           */
 /*                                                      +:+                   */
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
-/*   Created: 2025/11/13 11:32:13 by mbruyere       #+#    #+#                */
-/*   Updated: 2025/11/13 11:32:18 by mbruyere       ########   odam.nl        */
+/*   Created: 2025/11/13 14:18:06 by mbruyere       #+#    #+#                */
+/*   Updated: 2025/11/13 17:33:51 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "ft_get_next_line.h"
 #include <unistd.h>
-#include "ft_printf.h"
 
-int	ft_putvoidptr(void *ptr, int i)
+char	*ft_get_next_line(int fd)
 {
-	if (ptr == 0)
-	{
-		write(1, "0x0", 3);
-		return (3);
-	}
-	write(1, "0x", 2);
-	i = ft_putnbr_base((unsigned long)ptr, "0123456789abcdef", 0);
-	return (i + 2);
+	static char	*buffer;
+	char *small_buffer[BUFFER_SIZE];
+	int rtn_read;
+
+	rtn_read = read(fd, small_buffer, BUFFER_SIZE)
+	if (ft(strchr(small_buffer, '\n') == NULL)
+		
 }
-/*
-int	main(void)
-{
-	int i = 42;
-	void *test = &i;
-
-	ft_putvoidptr(test, i);
-}*/
