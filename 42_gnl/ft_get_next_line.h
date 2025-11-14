@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:39:21 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/11/13 17:12:32 by mbruyere       ########   odam.nl        */
+/*   Updated: 2025/11/14 16:54:50 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 */
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFFER_SIZE
+# define BUFFER_SIZE 42
 char	*get_next_line(int fd);
 
 /*
