@@ -1,0 +1,5 @@
+ceci est un fichier de test
+je sens que ca va bug avant cette ligne mdrrr
+mais bon je continue comme un con
+parce que je sens que je vais pqs gerer la fin du fichier
+donc je met plus de ligne que de loop
