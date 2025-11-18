@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                         :+:    :+:           */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:38:12 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/11/18 15:29:17 by mbruyere       ########   odam.nl        */
+/*   Updated: 2025/11/03 17:56:33 by mbruyere         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,3 +72,44 @@ static	int	half_check(const char *str, va_list args, int i)
 		cnt += ft_putstr(va_arg(args, char *));
 	return (cnt);
 }
+
+/*
+int	main(void)
+{
+	ft_printf("nbr = %d", ft_printf(" %p %p ", 0, 0));
+}
+*/
+/*
+int	main(void)
+{
+	ft_printf("test = %d\n", ft_printf(" %x ", -1));
+}
+*/
+/*
+int	main(void)
+{
+	int	i = ft_printf("test%s", "");
+	ft_printf("count = %d\n", i);
+}
+*/
+/*
+int	main(void)
+{
+	int				d;
+	char			c;
+	char			*str;
+	int				i;
+	unsigned int	u;
+	int				x;
+	int				X;
+	void			ptr;
+
+	str = "c'est déja bien hein";
+	d = 15;
+	c = 's';
+	i = 10;
+	u = 4294967295;
+	x = 346;
+	X = 346;
+	ft_printf("%d", ft_printf("%d%c %s%%%i%u%x%X%p", d, c, str, i, u, x, X, ptr));
+}*/
