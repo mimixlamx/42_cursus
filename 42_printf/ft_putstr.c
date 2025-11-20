@@ -1,15 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                         :+:    :+:           */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 16:43:01 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/11/03 16:57:53 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/11/20 12:43:09 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
+#include "ft_printf.h"
+/*
+** need ft_printf for all my functions and includes
+*/
 
 int	ft_putstr(char *str)
 {

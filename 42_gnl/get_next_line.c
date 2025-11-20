@@ -6,12 +6,10 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/11/13 14:18:06 by mbruyere       #+#    #+#                */
-/*   Updated: 2025/11/17 18:11:24 by mbruyere       ########   odam.nl        */
+/*   Updated: 2025/11/20 17:05:44 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
-#include <unistd.h>
-#include <stdlib.h>
 
 char		*ft_strchr(char *s, char c);
 void		*ft_calloc(size_t nmemb, size_t size);
@@ -19,22 +17,26 @@ static char	*ft_fill_stash(char *stash, char *buffer, size_t size_buffer);
 static char	*ft_rtn_value(char *stash);
 static char	*ft_reduce_stash(char *stash);
 
-char	*ft_get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	static char	*stash = NULL;
-	char		buffer[BUFFER_SIZE];
+	char		*buffer;
 	size_t		size_buffer;
 	char		*rtn;
 
-	while (ft_strchr(buffer, '\n') == NULL)
+	buffer = ft_calloc(BUFFER_SIZE, sizeof(char));
+	if (buffer == NULL)
+		return (NULL);
+	while (stash == NULL || ft_strchr(stash, '\n') == NULL)
 	{
 		size_buffer = read(fd, buffer, BUFFER_SIZE);
 		if (size_buffer <= 0)
-			return (NULL);
+			return (free(buffer), NULL);
 		stash = ft_fill_stash(stash, buffer, size_buffer);
 	}
 	rtn = ft_rtn_value(stash);
 	stash = ft_reduce_stash(stash);
+	free(buffer);
 	return (rtn);
 }
 
@@ -50,7 +52,11 @@ static char	*ft_reduce_stash(char *stash)
 		i++;
 	while (stash[i + j])
 		j++;
+	if (j == 1)
+		return (free(stash), NULL);
 	rtn = ft_calloc(j, sizeof(char));
+	if (rtn == NULL)
+		return (NULL);
 	j = 0;
 	i++;
 	while (stash[i + j])
@@ -59,9 +65,8 @@ static char	*ft_reduce_stash(char *stash)
 		j++;
 	}
 	rtn[j] = '\0';
-	return (rtn);
 	free(stash);
-	stash = NULL;
+	return (rtn);
 }
 
 static char	*ft_rtn_value(char *stash)
@@ -72,7 +77,9 @@ static char	*ft_rtn_value(char *stash)
 	i = 0;
 	while (stash[i] != '\n')
 		i++;
-	rtn = malloc (i * sizeof(char));
+	rtn = ft_calloc(i + 2, sizeof(char));
+	if (rtn == NULL)
+		return (NULL);
 	i = 0;
 	while (stash[i] != '\n')
 	{
@@ -96,7 +103,9 @@ static char	*ft_fill_stash(char *stash, char *buffer, size_t size_buffer)
 	while (stash != NULL && stash[len])
 		len++;
 	rtn = ft_calloc(len + size_buffer + 1, sizeof(char));
-	while (i < BUFFER_SIZE)
+	if (rtn == NULL)
+		return (NULL);
+	while (i < size_buffer)
 	{
 		while (j < len)
 		{
@@ -109,36 +118,6 @@ static char	*ft_fill_stash(char *stash, char *buffer, size_t size_buffer)
 	return (rtn);
 }
 /*
-static void	*ft_calloc(size_t nmemb, size_t size)
-{
-	char		*array;
-	size_t		cnt;
-
-	if (nmemb == 0 || size == 0)
-		return (malloc(0));
-	cnt = 0;
-	array = malloc(nmemb * size);
-	if (array == NULL)
-		return (NULL);
-	while ((nmemb * size) > cnt)
-	{
-		array[cnt] = 0;
-		cnt++;
-	}
-	return (array);
-}
-static char	*ft_strchr(char *s, char c)
-{
-	unsigned char	ucc;
-
-	ucc = (unsigned char)c;
-	while (*s != ucc && *s)
-		s++;
-	if (*s == ucc)
-		return ((char *)s);
-	return (NULL);
-}
-
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -148,11 +127,11 @@ int	main(void)
 	char	*str_line;
 	int		i;
 
-	i= 0;
-	fd = open("test_5_lignes.txt", O_RDONLY);
-	while (i < 10)
+	i= 1;
+	fd = open("test_16_line_one_word.txt", O_RDONLY);
+	while (i < 20)
 	{
-		str_line = ft_get_next_line(fd);
+		str_line = get_next_line(fd);
 		printf("result ligne %d = %s", i, str_line);
 		free(str_line);
 		str_line = NULL;

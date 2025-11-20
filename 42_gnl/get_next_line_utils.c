@@ -6,11 +6,9 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/11/17 18:02:18 by mbruyere       #+#    #+#                */
-/*   Updated: 2025/11/17 18:10:12 by mbruyere       ########   odam.nl        */
+/*   Updated: 2025/11/18 11:59:52 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
-#include <stdlib.h>
 #include "get_next_line.h"
 
 char	*ft_strchr(char *s, char c)

@@ -6,12 +6,13 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/11/13 11:32:13 by mbruyere       #+#    #+#                */
-/*   Updated: 2025/11/18 14:44:45 by mbruyere       ########   odam.nl        */
+/*   Updated: 2025/11/20 12:43:45 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 #include "ft_printf.h"
+/*
+** need ft_printf for all my functions and includes
+*/
 
 int	ft_putvoidptr(void *ptr, int i)
 {

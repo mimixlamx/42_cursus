@@ -6,10 +6,13 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:38:30 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/11/18 15:56:01 by mbruyere       ########   odam.nl        */
+/*   Updated: 2025/11/20 12:42:52 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
+#include "ft_printf.h"
+/*
+** need ft_printf for all my functions and includes
+*/
 
 static int	ft_lenbase(char *str)
 {

@@ -1,15 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                         :+:    :+:           */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 16:08:48 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/11/03 16:57:06 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/11/20 12:42:34 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
+#include "ft_printf.h"
+/*
+** need ft_printf for all my functions and includes
+*/
 
 int	ft_putnbr(int n, int i)
 {

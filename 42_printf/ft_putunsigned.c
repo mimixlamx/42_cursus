@@ -1,15 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunsigned.c                                   :+:      :+:    :+:   */
+/*   ft_putunsigned.c                                    :+:    :+:           */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:51:43 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/11/03 16:44:45 by mbruyere         ###   ####lausanne.ch   */
+/*   Updated: 2025/11/20 12:43:26 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
+#include "ft_printf.h"
+/*
+** need ft_printf for all my functions and includes
+*/
 
 int	ft_putunsigned(int n, int i)
 {

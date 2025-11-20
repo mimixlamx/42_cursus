@@ -6,19 +6,14 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:38:12 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/11/18 15:29:17 by mbruyere       ########   odam.nl        */
+/*   Updated: 2025/11/20 12:42:16 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "ft_printf.h"
-#include <stdarg.h>
-#include <unistd.h>
-
 /*
-** need stdarg for va_list...
-** need unistd for write
-** need ft_printf for all my functions
+** need ft_printf for all my functions and includes
 */
+
 static	int	half_check(const char *str, va_list args, int i);
 
 int	ft_printf(const char *str, ...)
