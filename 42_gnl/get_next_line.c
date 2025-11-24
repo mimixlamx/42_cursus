@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/11/13 14:18:06 by mbruyere       #+#    #+#                */
-/*   Updated: 2025/11/20 17:05:44 by mbruyere       ########   odam.nl        */
+/*   Updated: 2025/11/24 17:48:06 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -56,7 +56,7 @@ static char	*ft_reduce_stash(char *stash)
 		return (free(stash), NULL);
 	rtn = ft_calloc(j, sizeof(char));
 	if (rtn == NULL)
-		return (NULL);
+		return (free(stash), NULL);
 	j = 0;
 	i++;
 	while (stash[i + j])
@@ -115,9 +115,9 @@ static char	*ft_fill_stash(char *stash, char *buffer, size_t size_buffer)
 		rtn[len + i] = buffer[i];
 		i++;
 	}
-	return (rtn);
+	return (free(stash), rtn);
 }
-/*
+
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -128,7 +128,7 @@ int	main(void)
 	int		i;
 
 	i= 1;
-	fd = open("test_16_line_one_word.txt", O_RDONLY);
+	fd = open("giant_line_nl.txt", O_RDONLY);
 	while (i < 20)
 	{
 		str_line = get_next_line(fd);
@@ -139,4 +139,4 @@ int	main(void)
 	}
 	close(fd);
 	return (0);
-}*/
+}
