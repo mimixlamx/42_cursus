@@ -13,7 +13,7 @@
 
 char		*ft_strchr(char *s, char c);
 void		*ft_calloc(size_t nmemb, size_t size);
-static char	*ft_fill_stash(char *stash, char *buffer, size_t size_buffer);
+static char	*ft_fill_stash(char *stash, char *buffer, long size_buffer);
 static char	*ft_rtn_value(char *stash);
 static char	*ft_reduce_stash(char *stash);
 
@@ -21,18 +21,24 @@ char	*get_next_line(int fd)
 {
 	static char	*stash = NULL;
 	char		*buffer;
-	size_t		size_buffer;
+	long		size_buffer;
 	char		*rtn;
 
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	buffer = ft_calloc(BUFFER_SIZE, sizeof(char));
 	if (buffer == NULL)
 		return (NULL);
 	while (stash == NULL || ft_strchr(stash, '\n') == NULL)
 	{
 		size_buffer = read(fd, buffer, BUFFER_SIZE);
-		if (size_buffer <= 0)
-			return (free(buffer), NULL);
+		if (size_buffer < 0)
+			return (free(buffer), free(stash), NULL);
+		else if (size_buffer == 0)
+			break ;
 		stash = ft_fill_stash(stash, buffer, size_buffer);
+		if (stash == NULL)
+			return (free(buffer), NULL);
 	}
 	rtn = ft_rtn_value(stash);
 	stash = ft_reduce_stash(stash);
@@ -48,11 +54,13 @@ static char	*ft_reduce_stash(char *stash)
 
 	i = 0;
 	j = 0;
-	while (stash[i] != '\n')
+	if (stash == NULL)
+		return (NULL);
+	while (stash[i] != '\n' && stash[i])
 		i++;
 	while (stash[i + j])
 		j++;
-	if (j == 1)
+	if (j == 0)
 		return (free(stash), NULL);
 	rtn = ft_calloc(j, sizeof(char));
 	if (rtn == NULL)
@@ -65,8 +73,7 @@ static char	*ft_reduce_stash(char *stash)
 		j++;
 	}
 	rtn[j] = '\0';
-	free(stash);
-	return (rtn);
+	return (free(stash), rtn);
 }
 
 static char	*ft_rtn_value(char *stash)
@@ -75,27 +82,30 @@ static char	*ft_rtn_value(char *stash)
 	char	*rtn;
 
 	i = 0;
-	while (stash[i] != '\n')
+	if (stash == NULL)
+		return (NULL);
+	while (stash[i] != '\n' && stash[i])
 		i++;
 	rtn = ft_calloc(i + 2, sizeof(char));
 	if (rtn == NULL)
 		return (NULL);
 	i = 0;
-	while (stash[i] != '\n')
+	while (stash[i] != '\n' && stash[i])
 	{
 		rtn [i] = stash[i];
 		i++;
 	}
-	rtn[i] = '\n';
+	if (stash[i] == '\n')
+		rtn[i] = '\n';
 	return (rtn);
 }
 
-static char	*ft_fill_stash(char *stash, char *buffer, size_t size_buffer)
+static char	*ft_fill_stash(char *stash, char *buffer, long size_buffer)
 {
-	size_t	len;
+	long	len;
 	char	*rtn;
-	size_t	i;
-	size_t	j;
+	long	i;
+	long	j;
 
 	j = 0;
 	i = 0;
@@ -117,7 +127,7 @@ static char	*ft_fill_stash(char *stash, char *buffer, size_t size_buffer)
 	}
 	return (free(stash), rtn);
 }
-
+/*
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -129,9 +139,8 @@ int	main(void)
 
 	i= 1;
 	fd = open("giant_line_nl.txt", O_RDONLY);
-	while (i < 20)
+	while ((str_line = get_next_line(fd)) != NULL)
 	{
-		str_line = get_next_line(fd);
 		printf("result ligne %d = %s", i, str_line);
 		free(str_line);
 		str_line = NULL;
@@ -139,4 +148,4 @@ int	main(void)
 	}
 	close(fd);
 	return (0);
-}
+}*/
