@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:39:21 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/11/20 12:47:00 by mbruyere       ########   odam.nl        */
+/*   Updated: 2025/12/02 14:33:14 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -17,9 +17,7 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-/*
-** need unistd and stdarg in some codes
-*/
+
 int	ft_printf(const char *str, ...);
 int	ft_putnbr_base(unsigned long nbr, char *base, int i);
 int	ft_putnbr(int n, int i);

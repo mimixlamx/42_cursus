@@ -5,14 +5,11 @@
 /*                                                      +:+                   */
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
-/*   Created: 2025/11/13 11:32:13 by mbruyere       #+#    #+#                */
-/*   Updated: 2025/11/20 12:43:45 by mbruyere       ########   odam.nl        */
+/*   Created: 2025/12/02 14:38:26 by mbruyere       #+#    #+#                */
+/*   Updated: 2025/12/02 14:38:39 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-/*
-** need ft_printf for all my functions and includes
-*/
 
 int	ft_putvoidptr(void *ptr, int i)
 {
@@ -25,11 +22,3 @@ int	ft_putvoidptr(void *ptr, int i)
 	i = ft_putnbr_base((unsigned long)ptr, "0123456789abcdef", 0);
 	return (i + 2);
 }
-/*
-int	main(void)
-{
-	int i = 42;
-	void *test = &i;
-
-	ft_putvoidptr(test, i);
-}*/

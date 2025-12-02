@@ -6,13 +6,10 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:38:12 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/11/20 12:42:16 by mbruyere       ########   odam.nl        */
+/*   Updated: 2025/12/02 14:33:25 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-/*
-** need ft_printf for all my functions and includes
-*/
 
 static	int	half_check(const char *str, va_list args, int i);
 

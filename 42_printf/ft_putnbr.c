@@ -6,13 +6,10 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 16:08:48 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/11/20 12:42:34 by mbruyere       ########   odam.nl        */
+/*   Updated: 2025/12/02 14:33:50 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-/*
-** need ft_printf for all my functions and includes
-*/
 
 int	ft_putnbr(int n, int i)
 {

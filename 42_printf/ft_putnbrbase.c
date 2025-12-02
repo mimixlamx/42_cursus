@@ -6,13 +6,10 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:38:30 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/11/20 12:42:52 by mbruyere       ########   odam.nl        */
+/*   Updated: 2025/12/02 14:35:41 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-/*
-** need ft_printf for all my functions and includes
-*/
 
 static int	ft_lenbase(char *str)
 {
@@ -41,8 +38,3 @@ int	ft_putnbr_base(unsigned long nbr, char *base, int i)
 	}
 	return (i);
 }
-/*
-int	main(void)
-{
-	printf("%d", ft_putnbr_base(-346, "0123456789abcdef", 0));
-}*/

@@ -6,13 +6,10 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 16:43:01 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/11/20 12:43:09 by mbruyere       ########   odam.nl        */
+/*   Updated: 2025/12/02 14:34:08 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-/*
-** need ft_printf for all my functions and includes
-*/
 
 int	ft_putstr(char *str)
 {

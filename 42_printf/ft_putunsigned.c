@@ -6,13 +6,10 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:51:43 by mbruyere          #+#    #+#             */
-/*   Updated: 2025/11/20 12:43:26 by mbruyere       ########   odam.nl        */
+/*   Updated: 2025/12/02 14:34:18 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-/*
-** need ft_printf for all my functions and includes
-*/
 
 int	ft_putunsigned(int n, int i)
 {
