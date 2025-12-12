@@ -6,11 +6,13 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/11/13 14:18:06 by mbruyere       #+#    #+#                */
-/*   Updated: 2025/12/05 14:26:24 by mbruyere       ########   odam.nl        */
+/*   Updated: 2025/12/05 14:25:02 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
 
+char		*ft_strchr(char *s, char c);
+void		*ft_calloc(size_t nmemb, size_t size);
 static char	*ft_fill_stash(char *stash, char *buffer, long size_buffer);
 static char	*ft_rtn_value(char *stash);
 static char	*ft_reduce_stash(char *stash);
