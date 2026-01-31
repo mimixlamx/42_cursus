@@ -10,6 +10,28 @@
 #include <fcntl.h>
 #include <stdio.h> // to be deleted
 
+int	flood_fil_launch(int size, int x, int y, int c, char **map)
+{
+	char	**visited_map;
+	int		found_c;
+	int		found_e;
+	int		i;
+
+	i = 0;
+	found_c = 0;
+	found_e = 0;
+	visited_map = ft_calloc(size + 1, sizeof (char*));
+	while (i < size - 1)
+	{
+		visited_map[i] = ft_strdup(map[i]);
+		printf("visited_map[i] = %s\n", visited_map[i]);
+		i++;
+	}
+	return(1);
+}
+
+int	flood_fill
+
 int	check_in_map(int size, char **map)
 {
 	int	i;
@@ -18,6 +40,8 @@ int	check_in_map(int size, char **map)
 	int	p;
 	int	c;
 	int	e;
+	int	px;
+	int	py;
 
 	p = 0;
 	c = 0;
@@ -51,7 +75,11 @@ int	check_in_map(int size, char **map)
 				if (map[i][y] == '0' || map[i][y] == 'P' || map[i][y] == 'E' || map[i][y] == 'C')
 				{
 					if (map[i][y] == 'P')
+					{
+						px = i;
+						py = y;
 						p++;
+					}
 					else if (map[i][y] == 'E')
 						e++;
 					else if (map[i][y] == 'C')
@@ -71,6 +99,8 @@ int	check_in_map(int size, char **map)
 		return (printf("1 exit needed, now %d\n", e), 0);
 	if (c == 0) 
 		return (printf("1 collectible  needed, now %d\n", c), 0);
+	if (flood_fil_launch(size, px, py, c, map) == 0)
+		return (printf("fuck floodfill\n"), 0);
 	else
 		return (printf("no error in mapp"), 1);
 }
