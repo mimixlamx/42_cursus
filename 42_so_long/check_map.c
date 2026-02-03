@@ -10,7 +10,26 @@
 #include <fcntl.h>
 #include <stdio.h> // to be deleted
 
-int	flood_fil_launch(int size, int x, int y, int c, char **map)
+int	flood_fill(int w, int h, int x, int y, int *c, int *e, char **map)
+{
+	printf ("inside floodfill\n");
+	if (x < 0 || y < 0 || x > w || y > h)
+		return (printf("out of mapp\n"), 0);
+	if (map[x][y] == 1 || map[x][y] == 'V')
+		return(printf("reach wall or visited\n"), 1);
+	if (map[x][y] == 'C')
+		c++;
+	if (map[x][y] == 'E')
+		e++;
+	map[x][y] = 'V';
+	printf ("count this bitch\n");
+	flood_fill(w, h, x + 1, y, c, e, map);
+	flood_fill(w, h, x - 1, y, c, e, map);
+	flood_fill(w, h, x, y + 1, c, e, map);
+	flood_fill(w, h, x, y - 1, c, e, map);
+}
+
+int	flood_fil_launch(int w, int h, int x, int y, int c, char **map)
 {
 	char	**visited_map;
 	int		found_c;
@@ -20,22 +39,25 @@ int	flood_fil_launch(int size, int x, int y, int c, char **map)
 	i = 0;
 	found_c = 0;
 	found_e = 0;
-	visited_map = ft_calloc(size + 1, sizeof (char*));
-	while (i < size - 1)
+	visited_map = ft_calloc(w + 1, sizeof (char*));
+	while (i < w - 1)
 	{
 		visited_map[i] = ft_strdup(map[i]);
 		printf("visited_map[i] = %s\n", visited_map[i]);
 		i++;
 	}
-	return(1);
+	printf("launch floodfill %d %d %d %d\n",w ,h ,x ,y);
+	flood_fill(w, h, x, y, &found_c, &found_e, map);
+	if (found_c != c || found_e != 1)
+		return(printf("error in colictibles or exit\n"), 0);
+	return (printf("no error in floodfill\n"), 1);
 }
-
-int	flood_fill
 
 int	check_in_map(int size, char **map)
 {
 	int	i;
 	int	len_0;
+
 	int	y;
 	int	p;
 	int	c;
@@ -99,7 +121,7 @@ int	check_in_map(int size, char **map)
 		return (printf("1 exit needed, now %d\n", e), 0);
 	if (c == 0) 
 		return (printf("1 collectible  needed, now %d\n", c), 0);
-	if (flood_fil_launch(size, px, py, c, map) == 0)
+	if (flood_fil_launch(len_0, size, px, py, c, map) == 0)
 		return (printf("fuck floodfill\n"), 0);
 	else
 		return (printf("no error in mapp"), 1);
