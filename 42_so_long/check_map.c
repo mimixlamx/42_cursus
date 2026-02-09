@@ -13,20 +13,21 @@
 int	flood_fill(int w, int h, int x, int y, int *c, int *e, char **map)
 {
 	printf ("inside floodfill\n");
-	if (x < 0 || y < 0 || x > w || y > h)
+	if (x < 0 || y < 0 || x > h || y > w)
 		return (printf("out of mapp\n"), 0);
-	if (map[x][y] == 1 || map[x][y] == 'V')
-		return(printf("reach wall or visited\n"), 1);
+	if (map[x][y] == '1' || map[x][y] == 'V')
+		return(printf("reach wall or visited\n"), 0);
 	if (map[x][y] == 'C')
-		c++;
+		(*c)++;
 	if (map[x][y] == 'E')
-		e++;
+		(*e)++;
 	map[x][y] = 'V';
-	printf ("count this bitch\n");
+	printf ("count this bitch %s \n", map[x]);
 	flood_fill(w, h, x + 1, y, c, e, map);
 	flood_fill(w, h, x - 1, y, c, e, map);
 	flood_fill(w, h, x, y + 1, c, e, map);
 	flood_fill(w, h, x, y - 1, c, e, map);
+	return (printf("floodfill end\n"), 1);
 }
 
 int	flood_fil_launch(int w, int h, int x, int y, int c, char **map)
@@ -39,17 +40,24 @@ int	flood_fil_launch(int w, int h, int x, int y, int c, char **map)
 	i = 0;
 	found_c = 0;
 	found_e = 0;
-	visited_map = ft_calloc(w + 1, sizeof (char*));
-	while (i < w - 1)
+	visited_map = ft_calloc(h + 1, sizeof (char*));
+	while (i < h)
 	{
 		visited_map[i] = ft_strdup(map[i]);
-		printf("visited_map[i] = %s\n", visited_map[i]);
+		printf("visited_map[%d] = %s w = %d\n", i, visited_map[i], w);
 		i++;
 	}
 	printf("launch floodfill %d %d %d %d\n",w ,h ,x ,y);
-	flood_fill(w, h, x, y, &found_c, &found_e, map);
+	flood_fill(w, h, x, y, &found_c, &found_e, visited_map);
+	i = 0;
+	while (i < h)
+	{
+		printf("visited_map[%d] = %s w = %d\n", i, visited_map[i], w);
+		i++;
+	}
+
 	if (found_c != c || found_e != 1)
-		return(printf("error in colictibles or exit\n"), 0);
+		return(printf("error in colictibles or exit e = %d c = %d\n", found_e, found_c), 0);
 	return (printf("no error in floodfill\n"), 1);
 }
 
@@ -94,7 +102,7 @@ int	check_in_map(int size, char **map)
 				return (printf("error border line map[%d]\n", i));
 			while (y > 0 && y <= len_0 - 2)
 			{
-				if (map[i][y] == '0' || map[i][y] == 'P' || map[i][y] == 'E' || map[i][y] == 'C')
+				if (map[i][y] == '0' || map[i][y] == 'P' || map[i][y] == 'E' || map[i][y] == 'C' || map[i][y] == '1')
 				{
 					if (map[i][y] == 'P')
 					{
@@ -141,7 +149,7 @@ int	check_size_map(int size, char **map)
 		i++;
 	}
 	if (i != size)
-		return (printf("error in size of a line\n i = %d, size = %d\n", i, size), 0);
+		return (printf("error in size of a line\nlen_0 = %d vs len_%d = %zu\n",len_0, i,ft_strlen(map[i])), 0);
 	if (len_0 == size)
 		return (printf("error square map\n"),0);
 	else
@@ -164,9 +172,13 @@ int	main(int argc, char **argv)
 	if (ft_strncmp((argv[1] + (ft_strlen(argv[1]) - 4)),".ber", 4) != 0)
 		return (printf ("pls enter only a .ber map\n"), 0);// idem
 	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+		return (printf("pas d'ouverture fichier inexistant?\n"), 1);
 	while ((temp = get_next_line(fd)) != NULL)
 		size++;
-	printf("size = %d\n", i);
+	printf("size = %d\n", size);
+	if (size == 0)
+		return(printf("empty map\n"), 0);
 	map = ft_calloc(size + 1, sizeof (char*));
 	close(fd);
 	fd = open(argv[1], O_RDONLY);
