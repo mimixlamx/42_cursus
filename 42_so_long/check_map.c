@@ -6,85 +6,65 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/02/10 14:27:41 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/02/10 16:45:14 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/02/12 16:49:41 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
- ** file dedicated to check the map on so long project 
-*/
-#include "libft.h"
-/*
- ** to include the libft
- ** voir pour toutmettre dansla libft, printf etc
-*/
-#include <stdlib.h>
-#include <fcntl.h>
+#include "so_long.h"
 #include <stdio.h> // to be deleted
 
-typedef struct	s_check
+static	void	free_map(t_check *check)
 {
-	char	**map;
-	char	**visited_map;
-	int		w;
-	int		h;
-	int		x;
-	int		y;
-	int		p;
-	int		e;
-	int		c;
-	int		found_c;
-	int		found_e;
-}	t_check;
-
-int	flood_fill(int x, int y, t_check *check)
-{
-	printf ("inside floodfill\n");
-	if (x < 0 || y < 0 || x > check->h || y > check->w)
-		return (printf("out of mapp\n"), 0);
-	if (check->visited_map[x][y] == '1' || check->visited_map[x][y] == 'V')
-		return (printf("reach wall or visited\n"), 0);
-	if (check->visited_map[x][y] == 'C')
-		check->found_c++;
-	if (check->visited_map[x][y] == 'E')
-		check->found_e++;
-	check->visited_map[x][y] = 'V';
-	printf ("count this bitch %s \n", check->visited_map[x]);
-	flood_fill(x + 1, y, check);
-	flood_fill(x - 1, y, check);
-	flood_fill(x, y + 1, check);
-	flood_fill(x, y - 1, check);
-	return (printf("floodfill end\n"), 1);
-}
-
-int	flood_fil_launch(t_check *check)
-{
-	int		i;
+	int	i;
 
 	i = 0;
-	check->found_c = 0;
-	check->found_e = 0;
-	check->visited_map = ft_calloc(check->h + 1, sizeof(char *));
 	while (i < check->h)
+		free(check->map[i]);
+	free(check->map);
+}
+static int		check_inside_line(int i, int y, t_check *check)
+{
+	printf ("inside lines i =%d y = %d\n", i, y);
+	if (check->map[i][0] == '1' && check->map[i][check->w - 1] == '1')
+		y++;
+	else
+		return (printf("error border line map[%d]\n", i), 0);
+	while (y > 0 && y < check->w - 1)
 	{
-		check->visited_map[i] = ft_strdup(check->map[i]);
-		printf("visited_map[%d] = %s w = %d\n", i, check->visited_map[i], check->w);
-		i++;
+		if (ft_strchr("01PEC", check->map[i][y]))
+		{
+			if (check->map[i][y] == 'P')
+			{
+				check->x = i;
+				check->y = y;
+				check->p++;
+			}
+			else if (check->map[i][y] == 'E')
+				check->e++;
+			else if (check->map[i][y] == 'C')
+				check->c++;
+			y++;
+		}
+		else
+			return (printf("error char %c in position[%d][%d] char %c\n",
+					check->map[i][y], i, y, check->map[i][y]), 0);
 	}
-	printf("launch floodfill %d %d %d %d\n", check->w, check->h, check->x, check->y);
-	flood_fill(check->x, check->y, check);
-	i = 0;
-	while (i < check->h)
-	{
-		printf("visited_map[%d] = %s w = %d\n", i, check->visited_map[i], check->w);
-		i++;
-	}
-	if (check->found_c != check->c || check->found_e != 1)
-		return (printf("error in colictibles or exit e = %d c = %d\n", check->found_e, check->found_c), 0);
-	return (printf("no error in floodfill\n"), 1);
+	return (1);
 }
 
-int	check_in_map(t_check *check)
+static int		check_first_last_line(int i, int y, t_check *check)
+{
+	printf ("first or last line i = %d\n", i);
+	while (y < check->w)
+	{
+		if (check->map[i][y] == '1')
+			y++;
+		else
+			return (printf("error in line %d not only 1\n", i), 0);
+	}
+	return (1);
+}
+
+static int		check_in_map(t_check *check)
 {
 	int	i;
 	int	y;
@@ -97,45 +77,10 @@ int	check_in_map(t_check *check)
 	while (i < check->h)
 	{
 		if (i == 0 || i == check->h - 1)
-		{
-			printf ("first or last line i = %d\n", i);
-			while (y < check->w)
-			{
-				if (check->map[i][y] == '1')
-					y++;
-				else
-					return (printf("error in line %d not only 1\n", i), 0);
-			}
-			y = 0;
-		}
-		else
-		{
-			printf ("inside lines i =%d y = %d\n", i, y);
-			if (check->map[i][0] == '1' && check->map[i][check->w - 1] == '1')
-				y++;
-			else
-				return (printf("error border line map[%d]\n", i), 0);
-			while (y > 0 && y <= check->w - 2)
-			{
-				if (check->map[i][y] == '0' || check->map[i][y] == 'P' || check->map[i][y] == 'E' || check->map[i][y] == 'C' || check->map[i][y] == '1')
-				{
-					if (check->map[i][y] == 'P')
-					{
-						check->x = i;
-						check->y = y;
-						check->p++;
-					}
-					else if (check->map[i][y] == 'E')
-						check->e++;
-					else if (check->map[i][y] == 'C')
-						check->c++;
-					y++;
-				}
-				else
-					return (printf("error char not ok in map %c in position [%d][%d] char %c\n", check->map[i][y], i, y, check->map[i][y]), 0);
-			}
-			y = 0;
-		}
+			if (check_first_last_line(i, y, check) == 0)
+				return (0);
+		if (check_inside_line(i, y, check) == 0)
+			return (0);
 		i++;
 	}
 	if (check->p > 1 || check->p == 0)
@@ -147,7 +92,7 @@ int	check_in_map(t_check *check)
 	return (printf("no error in mapp\n"), 1);
 }
 
-int	check_size_map(t_check	*check)
+static int		check_size_map(t_check	*check)
 {
 	int	i;
 
@@ -160,14 +105,15 @@ int	check_size_map(t_check	*check)
 		i++;
 	}
 	if (i != check->h)
-		return (printf("error in size of a line\nlen_0 = %d vs len_%d = %zu\n", check->w, i, ft_strlen(check->map[i])), 0);
+		return (printf("error in size of a line\nlen_0 = %d vs len_%d = %zu\n",
+				check->w, i, ft_strlen(check->map[i])), 0);
 	if (check->w == check->h)
 		return (printf("error square map\n"), 0);
 	else
 		return (printf("'no error on size mapp\n"), 1);
 }
 
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	char	*temp;
 	int		i;
@@ -214,5 +160,8 @@ int	main(int argc, char **argv)
 	if (flood_fil_launch(&check) == 0)
 		return (printf("fuck floodfill\n"), 0);
 	else
+	{
+		//free_map(&check);
 		return (0);
+	}
 }
