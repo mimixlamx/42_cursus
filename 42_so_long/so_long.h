@@ -18,6 +18,8 @@
 # include "libft/libft.h"
 # include <stdlib.h>
 # include <fcntl.h>
+# include <stdio.h>
+# include "minilibx-linux/mlx.h"
 
 typedef struct s_check
 {
@@ -34,7 +36,20 @@ typedef struct s_check
 	int		found_e;
 }	t_check;
 
-int	flood_fil_launch(t_check *check);
+typedef struct s_app
+{
+	void	*mlx;
+	void	*win;
+	void	*img_background;
+	void	*img_wall;
+	void	*img_player;
+	int		size;
+	t_check	check;
+}	t_app;
+int		test(t_check *check);
+int		flood_fil_launch(t_check *check);
+void	free_visited_map(t_check *check);
+void	free_map(t_check *check);
 
 /*
 ** end

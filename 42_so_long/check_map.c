@@ -12,18 +12,9 @@
 #include "so_long.h"
 #include <stdio.h> // to be deleted
 
-static	void	free_map(t_check *check)
+//printf ("inside lines i =%d y = %d\n", i, y);
+static int	check_inside_line(int i, int y, t_check *check)
 {
-	int	i;
-
-	i = 0;
-	while (i < check->h)
-		free(check->map[i]);
-	free(check->map);
-}
-static int		check_inside_line(int i, int y, t_check *check)
-{
-	printf ("inside lines i =%d y = %d\n", i, y);
 	if (check->map[i][0] == '1' && check->map[i][check->w - 1] == '1')
 		y++;
 	else
@@ -51,7 +42,7 @@ static int		check_inside_line(int i, int y, t_check *check)
 	return (1);
 }
 
-static int		check_first_last_line(int i, int y, t_check *check)
+static int	check_first_last_line(int i, int y, t_check *check)
 {
 	printf ("first or last line i = %d\n", i);
 	while (y < check->w)
@@ -64,7 +55,7 @@ static int		check_first_last_line(int i, int y, t_check *check)
 	return (1);
 }
 
-static int		check_in_map(t_check *check)
+static int	check_in_map(t_check *check)
 {
 	int	i;
 	int	y;
@@ -92,7 +83,7 @@ static int		check_in_map(t_check *check)
 	return (printf("no error in mapp\n"), 1);
 }
 
-static int		check_size_map(t_check	*check)
+static int	check_size_map(t_check	*check)
 {
 	int	i;
 
@@ -113,55 +104,86 @@ static int		check_size_map(t_check	*check)
 		return (printf("'no error on size mapp\n"), 1);
 }
 
-int		main(int argc, char **argv)
+static int	first_check(int argc, char **argv, t_check *check)
 {
 	char	*temp;
-	int		i;
 	int		fd;
-	int		len_temp;
-	t_check	check;
 
-	check.h = 0;
-	i = 0;
+	check->h = 0;
 	if (argc != 2)
 		return (printf("pls enter only the mapp as an argument\n"), 0);
 	if (ft_strncmp((argv[1] + (ft_strlen(argv[1]) - 4)), ".ber", 4) != 0)
 		return (printf ("pls enter only a .ber map\n"), 0);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		return (printf("pas d'ouverture fichier inexistant?\n"), 1);
-	while ((temp = get_next_line(fd)) != NULL)
-		check.h++;
-	printf("h = %d\n", check.h);
-	if (check.h == 0)
+		return (printf("pas d'ouverture fichier inexistant?\n"), 0);
+	temp = get_next_line(fd);
+	while (temp)
+	{
+		check->h++;
+		free(temp);
+		temp = get_next_line(fd);
+	}
+	free (temp);
+	temp = NULL;
+	printf("h = %d\n", check->h);
+	if (check->h == 0)
 		return (printf("empty map\n"), 0);
-	check.map = ft_calloc(check.h + 1, sizeof (char *));
 	close(fd);
+	return (1);
+}
+
+static	int	c_map(int argc, char **argv, t_check *check)
+{
+	int		i;
+	char	*temp;
+	int		len_temp;
+	int		fd;
+
+	i = 0;
+	check->map = ft_calloc(check->h + 1, sizeof (char *));
+	if (check->map == NULL)
+		return (0);
 	fd = open(argv[1], O_RDONLY);
-	while ((temp = get_next_line(fd)) != NULL)
+	temp = get_next_line(fd);
+	while (temp)
 	{
 		printf ("temp %d = %s\n", i, temp);
 		len_temp = ft_strlen(temp);
 		if (len_temp > 0 && temp[len_temp - 1] == '\n')
 			temp[len_temp - 1] = '\0';
-		check.map[i] = ft_strdup(temp);
+		check->map[i] = ft_strdup(temp);
+		free (temp);
 		i++;
+		temp = get_next_line(fd);
 	}
+	free(temp);
 	close(fd);
+	return (1);
+}
+
+int	main(int argc, char **argv)
+{
+	int		i;
+	t_check	check;
+
+	if (first_check(argc, argv, &check) == 0 || c_map(argc, argv, &check) == 0)
+		return (1);
 	i = 0;
-	while (check.map[i])
+	while (check.map[i])// debug while 
 	{
 		printf ("map[%d] = %s\n", i, check.map[i]);
 		i++;
 	}
 	printf ("argc = %d\nargv = %s\n", argc, argv[1]);
 	if (check_size_map(&check) == 0 || check_in_map(&check) == 0)
-		return (printf("error in map formatting\n"), 1);
+		return (printf("error in map formatting\n"),
+		free_map(&check), 1);
 	if (flood_fil_launch(&check) == 0)
-		return (printf("fuck floodfill\n"), 0);
-	else
-	{
-		//free_map(&check);
-		return (0);
-	}
+		return (printf("fuck floodfill\n"), 
+		free_map(&check), free_visited_map(&check), 1);
+	test(&check);
+	free_map(&check);
+	free_visited_map(&check);
+	return (0);
 }
