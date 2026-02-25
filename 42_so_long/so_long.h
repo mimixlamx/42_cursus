@@ -43,6 +43,8 @@ typedef struct s_app
 	void	*img_background;
 	void	*img_wall;
 	void	*img_player;
+	void	*img_collectible;
+	void	*img_exit;
 	int		size;
 	t_check	check;
 }	t_app;
@@ -50,7 +52,7 @@ int		test(t_check *check);
 int		flood_fil_launch(t_check *check);
 void	free_visited_map(t_check *check);
 void	free_map(t_check *check);
-
+void	move_up(t_app *app);
 /*
 ** end
 */
