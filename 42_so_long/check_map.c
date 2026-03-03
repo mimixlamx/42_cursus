@@ -12,7 +12,6 @@
 #include "so_long.h"
 #include <stdio.h> // to be deleted
 
-//printf ("inside lines i =%d y = %d\n", i, y);
 static int	check_inside_line(int i, int y, t_check *check)
 {
 	if (check->map[i][0] == '1' && check->map[i][check->w - 1] == '1')
@@ -182,8 +181,13 @@ int	main(int argc, char **argv)
 	if (flood_fil_launch(&check) == 0)
 		return (printf("fuck floodfill\n"), 
 		free_map(&check), free_visited_map(&check), 1);
-	test(&check);
-	free_map(&check);
+	i = 0;
+	while (check.map[i])// debug while 
+	{
+		printf ("2map[%d] = %s\n", i, check.map[i]);
+		i++;
+	}
 	free_visited_map(&check);
+	test(&check);
 	return (0);
 }
