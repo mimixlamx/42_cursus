@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 12:55:31 by mbruyere          #+#    #+#             */
-/*   Updated: 2026/03/12 12:42:13 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/03/12 17:35:11 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		ft_putunsigned(int n, int i);
 int		ft_putchar(char c);
 int		ft_putstr(char *str);
 int		ft_putvoidptr(void *ptr, int i);
-
+long	ft_atol(const char *nptr);
 /*
 ** end
 */
