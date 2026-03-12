@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/02/12 13:52:09 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/02/12 14:29:46 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/03/12 11:54:34 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -18,7 +18,6 @@
 # include "libft/libft.h"
 # include <stdlib.h>
 # include <fcntl.h>
-# include <stdio.h>
 # include "minilibx-linux/mlx.h"
 
 typedef struct s_check

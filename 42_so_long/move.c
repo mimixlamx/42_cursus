@@ -5,7 +5,10 @@ void	move_up(t_app *app)
 	if (app->check.map[app->check.x - 1][app->check.y] != '1')
 	{
 		if (app->check.map[app->check.x - 1][app->check.y] == 'C')
+		{
 			app->collected++;
+			ft_printf("collected =%d", app->collected);
+		}
 		else if (app->check.map[app->check.x - 1][app->check.y] == 'E')
 		{
 			if (app->collected == app->check.c)

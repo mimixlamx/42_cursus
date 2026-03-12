@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/02/10 14:27:53 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/02/10 14:29:57 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/03/12 12:09:10 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	witch_key(int keycode, void *param)
 	else if (keycode == 100 || keycode == 65363)
 		return (move_right((t_app *)param), 1);
 	else
-		return (printf("not binded\n"), 0);
+		return (ft_printf("not binded\n"), 0);
 }
 
 int	load_image(t_app *app)
@@ -65,7 +65,7 @@ int	load_image(t_app *app)
 			&app->size, &app->size);
 	if (!app->img_player || !app->img_background || !app->img_wall
 		|| !app->img_collectible || !app->img_exit)
-		return (printf("xpm not ok"), 0);
+		return (ft_printf("xpm not ok"), 0);
 	return (1);
 }
 
@@ -108,12 +108,12 @@ int	test(t_check *check)
 	i = 0;
 	app.mlx = mlx_init();
 	app.size = 128;
-	printf("h =%d\n", app.check.h);
+	ft_printf("h =%d\n", app.check.h);
 	app.win = mlx_new_window(app.mlx, (128 * app.check.w),
 			(128 * app.check.h), "Test MLX");
 	if (load_image(&app) == 0)
 		return (0);
-	printf("all image ok\n");
+	ft_printf("all image ok\n");
 	put_image(&app);
 	mlx_key_hook(app.win, witch_key, &app);
 	mlx_hook(app.win, 17, 0, close_window, &app);
