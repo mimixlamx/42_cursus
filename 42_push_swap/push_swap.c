@@ -6,10 +6,10 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/12 14:20:27 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/12 17:41:18 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/03/13 16:43:17 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
-
+// verifier les cas derreur "" " " et a priori ya des soucis sur tes doublons
 #include "push_swap.h"
 #include <stdio.h>
 static int	check_int(t_data *data)
@@ -19,7 +19,7 @@ static int	check_int(t_data *data)
 	int	len;
 
 	len = 0;
-	i = 1;
+	i = 0;
 	while (i < data->count)
 	{
 		y = 0;
@@ -47,11 +47,11 @@ static int	fill_stack_a(t_data	*data)
 	long	temp;
 
 	i = 0;
-	while(i < data->count - 1)
+	while(i < data->count)
 	{
-	ft_printf("array %d = %s\n", i+1, data->array[i+1]);
-	temp = ft_atol(data->array[i+1]);
-		printf("temp %d = %ld\n", i+1, temp);
+	ft_printf("array %d = %s\n", i, data->array[i]);
+	temp = ft_atol(data->array[i]);
+		printf("temp %d = %ld\n", i, temp);
 		if (temp < -2147483648 || temp > 2147483647)
 			return (ft_printf ("min or max\n"),0);
 		data->stack_a[i] = (int)temp;
@@ -60,7 +60,7 @@ static int	fill_stack_a(t_data	*data)
 	return (1);
 }
 
-int	check_duplicates(t_data *data)
+static int	check_duplicates(t_data *data)
 {
 	int	i;
 	int	y;
@@ -83,19 +83,38 @@ int	check_duplicates(t_data *data)
 
 int	main(int argc, char **argv)
 {
+	int	i;
 	t_data	data;
 
-	data.array = argv;
-	data.count = argc;
+	if (argc == 1)
+		return(1);
+	if(argc != 2)
+	{
+		data.array = argv + 1;
+		data.count = argc - 1;
+	}
+	else
+	{
+		data.array = ft_split(argv[1], ' ');
+		while (data.array[i])
+			i++;
+		data.count = i;
+	}
+	i = 0;
+	while (i < data.count)
+	{
+		ft_printf("line array %d =%s\n", i, data.array[i]);
+		i++;
+	}
 	if (check_int(&data) == 0)
-		return (ft_printf("error\n", 1));
+	return (ft_printf("error1\n", 1));
 	data.stack_a = ft_calloc(argc, sizeof(int ));
 	data.stack_b = ft_calloc(argc, sizeof(int ));
 	if(fill_stack_a(&data) == 0 || check_duplicates(&data) == 0)
-		return (ft_printf("error\n"), 1);
-	int	i;
+		return (ft_printf("error2\n"), 1);
+
 	i = 0;
-	while (i < data.count - 1)
+	while (i < data.count)
 	{
 		ft_printf("line %d =%d\n", i, data.stack_a[i]);
 		i++;
