@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/12 14:20:27 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/13 16:43:17 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/03/13 18:22:38 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 // verifier les cas derreur "" " " et a priori ya des soucis sur tes doublons
@@ -67,9 +67,9 @@ static int	check_duplicates(t_data *data)
 
 	i = 0;
 	y = 1;
-	while (i < data->count - 1)
+	while (i < data->count)
 	{
-		while (y < data ->count - 1)
+		while (y < data ->count)
 		{
 			 if (data->stack_a[i] == data->stack_a[y])
 				return (ft_printf("duplicate\n"), 0);
