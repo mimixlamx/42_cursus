@@ -6,10 +6,10 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/12 14:20:27 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/13 18:22:38 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/03/16 18:23:39 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
-// verifier les cas derreur "" " " et a priori ya des soucis sur tes doublons
+// verifier les cas derreur "" " "
 #include "push_swap.h"
 #include <stdio.h>
 static int	check_int(t_data *data)
@@ -20,7 +20,7 @@ static int	check_int(t_data *data)
 
 	len = 0;
 	i = 0;
-	while (i < data->count)
+	while (i < data->size_a)
 	{
 		y = 0;
 		if (!data->array[i] || !data->array[i][0])
@@ -47,7 +47,7 @@ static int	fill_stack_a(t_data	*data)
 	long	temp;
 
 	i = 0;
-	while(i < data->count)
+	while(i < data->size_a)
 	{
 	ft_printf("array %d = %s\n", i, data->array[i]);
 	temp = ft_atol(data->array[i]);
@@ -67,9 +67,9 @@ static int	check_duplicates(t_data *data)
 
 	i = 0;
 	y = 1;
-	while (i < data->count)
+	while (i < data->size_a)
 	{
-		while (y < data ->count)
+		while (y < data ->size_a)
 		{
 			 if (data->stack_a[i] == data->stack_a[y])
 				return (ft_printf("duplicate\n"), 0);
@@ -91,17 +91,18 @@ int	main(int argc, char **argv)
 	if(argc != 2)
 	{
 		data.array = argv + 1;
-		data.count = argc - 1;
+		data.size_a = argc - 1;
 	}
 	else
 	{
 		data.array = ft_split(argv[1], ' ');
 		while (data.array[i])
 			i++;
-		data.count = i;
+		data.size_a = i;
 	}
+	data.size_b = 0;
 	i = 0;
-	while (i < data.count)
+	while (i < data.size_a)
 	{
 		ft_printf("line array %d =%s\n", i, data.array[i]);
 		i++;
@@ -114,10 +115,32 @@ int	main(int argc, char **argv)
 		return (ft_printf("error2\n"), 1);
 
 	i = 0;
-	while (i < data.count)
+	while (i < data.size_a)
 	{
-		ft_printf("line %d =%d\n", i, data.stack_a[i]);
+		ft_printf("line a %d =%d\n", i, data.stack_a[i]);
 		i++;
 	}
-	return (ft_printf("the end tkt\n", 0));
+	data.size_b = 2;
+	data.stack_b[0] = data.stack_a[2];
+	data.stack_b[1] = data.stack_a[3];
+	i = 0;
+	while (i < data.size_a)
+	{
+		ft_printf("line b %d =%d\n", i, data.stack_b[i]);
+		i++;
+	}
+	pb(&data);
+	i = 0;
+	while (i < data.size_a)
+	{
+		ft_printf("line after a %d =%d\n", i, data.stack_a[i]);
+		i++;
+	}
+	i = 0;
+	while (i < data.size_a)
+	{
+		ft_printf("line after b %d =%d\n", i, data.stack_b[i]);
+		i++;
+	}
+	return (ft_printf("the end\n", 0));
 }

@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   push_swap.h                                         :+:    :+:           */
+/*   easy_sort.c                                         :+:    :+:           */
 /*                                                      +:+                   */
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
-/*   Created: 2026/03/12 14:25:43 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/16 17:25:02 by mbruyere       ########   odam.nl        */
+/*   Created: 2026/03/16 15:12:48 by mbruyere       #+#    #+#                */
+/*   Updated: 2026/03/16 16:45:49 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include "libft/libft.h"
-# include <stdlib.h>
-
-typedef struct s_data
+void	sort_2(t_data *data)
 {
-	char	**array;
-	int		size_a;
-	int		size_b;
-	int		*stack_a;
-	int		*stack_b;
-}	t_data;
-
-int	main(int argc, char **argv);
-void	sa(t_data *data);
-void	sb(t_data *data);
-void	ss(t_data *data);
-void	pa(t_data *data);
-void	pb(t_data *data);
-
-#endif
+	return ;
+}
