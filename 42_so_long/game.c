@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   test.c                                              :+:    :+:           */
+/*   game.c                                              :+:    :+:           */
 /*                                                      +:+                   */
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
-/*   Created: 2026/02/10 14:27:53 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/12 12:09:10 by mbruyere       ########   odam.nl        */
+/*   Created: 2026/03/18 13:56:54 by mbruyere       #+#    #+#                */
+/*   Updated: 2026/03/18 15:44:41 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,43 +69,13 @@ int	load_image(t_app *app)
 	return (1);
 }
 
-void	put_image(t_app *app)
-{
-	int	i;
-	int	y;
-
-	i = 0;
-	y = 0;
-	while (i < app->check.h)
-	{
-		while (y < app->check.w)
-		{
-			if (app->check.map[i][y] == '1')
-				mlx_put_image_to_window(app->mlx, app->win, app->img_wall, app->size * y, app->size * i);
-			if (app->check.map[i][y] == 'P')
-				mlx_put_image_to_window(app->mlx, app->win, app->img_player, app->size * y, app->size * i);
-			if (app->check.map[i][y] == '0')
-				mlx_put_image_to_window(app->mlx, app->win, app->img_background, app->size * y, app->size * i);
-			if (app->check.map[i][y] == 'C')
-				mlx_put_image_to_window(app->mlx, app->win, app->img_collectible, app->size * y, app->size * i);
-			if (app->check.map[i][y] == 'E')
-				mlx_put_image_to_window(app->mlx, app->win, app->img_exit, app->size * y, app->size * i);
-			y++;
-		}
-		y = 0;
-		i++;
-	}
-}
-
-int	test(t_check *check)
+int	launch_game(t_check *check)
 {
 	t_app	app;
-	int		i;
-	int		y;
 
+	app.count_move = 0;
+	app.collected = 0;
 	app.check = *check;
-	y = 0;
-	i = 0;
 	app.mlx = mlx_init();
 	app.size = 128;
 	ft_printf("h =%d\n", app.check.h);

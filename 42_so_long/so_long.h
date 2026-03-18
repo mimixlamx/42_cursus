@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/02/12 13:52:09 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/12 11:54:34 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/03/18 15:36:52 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -18,6 +18,7 @@
 # include "libft/libft.h"
 # include <stdlib.h>
 # include <fcntl.h>
+#include <unistd.h>
 # include "minilibx-linux/mlx.h"
 
 typedef struct s_check
@@ -46,9 +47,13 @@ typedef struct s_app
 	void	*img_exit;
 	int		size;
 	int		collected;
+	int		count_move;
 	t_check	check;
 }	t_app;
-int		test(t_check *check);
+int		launch_game(t_check *check);
+int		first_check(int argc, char **argv, t_check *check);
+int		check_size_map(t_check	*check);
+int		c_map(char **argv, t_check *check);
 int		flood_fil_launch(t_check *check);
 void	free_visited_map(t_check *check);
 void	free_map(t_check *check);

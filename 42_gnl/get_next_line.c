@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/11/13 14:18:06 by mbruyere       #+#    #+#                */
-/*   Updated: 2025/12/05 14:26:24 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/03/18 13:29:33 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"

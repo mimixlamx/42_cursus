@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/02/12 14:09:46 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/12 12:03:28 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/03/18 12:54:09 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
@@ -42,7 +42,7 @@ int	flood_fil_launch(t_check *check)
 	while (i < check->h)
 	{
 		check->visited_map[i] = ft_strdup(check->map[i]);
-		ft_printf("v_map[%d] = %s w = %d\n", i, check->visited_map[i], check->w);
+		ft_printf("vmap[%d] = %s w = %d\n", i, check->visited_map[i], check->w);
 		i++;
 	}
 	ft_printf("launch %d %d %d %d\n", check->w, check->h, check->x, check->y);
@@ -50,7 +50,7 @@ int	flood_fil_launch(t_check *check)
 	i = 0;
 	while (i < check->h)
 	{
-		ft_printf("v_map[%d] = %s w = %d\n", i, check->visited_map[i], check->w);
+		ft_printf("vmap[%d] = %s w = %d\n", i, check->visited_map[i], check->w);
 		i++;
 	}
 	if (check->found_c != check->c || check->found_e != 1)
