@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/18 13:57:22 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/18 16:09:29 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/03/20 16:58:33 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	first_check(int argc, char **argv, t_check *check)
 	}
 	free (temp);
 	temp = NULL;
-	ft_printf("h = %d\n", check->h);
 	if (check->h == 0)
 		return (ft_printf("Error\nempty map\n"), 0);
 	close(fd);
@@ -56,7 +55,6 @@ int	c_map(char **argv, t_check *check)
 	temp = get_next_line(fd);
 	while (temp)
 	{
-		ft_printf ("temp %d = %s\n", i, temp);
 		len_temp = ft_strlen(temp);
 		if (len_temp > 0 && temp[len_temp - 1] == '\n')
 			temp[len_temp - 1] = '\0';
@@ -77,16 +75,12 @@ int	check_size_map(t_check	*check)
 	i = 1;
 	check->w = ft_strlen(check->map[0]);
 	while (check->map[i] && check->w == (int)ft_strlen(check->map[i]))
-	{
-		ft_printf ("len_0 = %d\n", check->w);
-		ft_printf ("len_%d= %ld\n", i, ft_strlen(check->map[i]));
 		i++;
-	}
 	if (i != check->h)
-		return (ft_printf("Error\nin size line\nlen_0 = %d vs len_%d = %zu\n",
-				check->w, i, ft_strlen(check->map[i])), 0);
+		return (ft_printf("Error\nin size line len_0 = %d vs len_%d = %d\n",
+				check->w, i, (int)ft_strlen(check->map[i])), 0);
 	if (check->w == check->h)
 		return (ft_printf("Error\nsquare map\n"), 0);
 	else
-		return (ft_printf("no error on size mapp\n"), 1);
+		return (1);
 }
