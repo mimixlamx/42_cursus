@@ -1,31 +1,54 @@
-NAME	= so_long.a
-CC	= gcc
-CFLAGS	= -Wall -Wextra -Werror
-MLXFLAGS = -lX11 -Lxext
+NAME 		= so_long
 
-SRC	= check_map.c\
-	fload_fill.c\
-	free.c\
-	game.c\
-	move.c\
-	put_images.c\
-	utils_check_map.c
+CC 			= gcc
+CFLAGS 		= -Wall -Werror -Wextra -g -no-pie
 
-OBJ_FILES = $(SRC:.c=.o)
+INCLUDES = -I$(INC_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR)
 
-all: $(NAME)
+LIBFT_DIR	= libft 
+LIBFT 		= $(LIBFT_DIR)/libft.a
 
-$(NAME): $(OBJ_FILES)
-	ar rcs $(NAME) $(OBJ_FILES)
+MLX_DIR 	= minilibx-linux
+MLX_LIB 	= $(MLX_DIR)/libmlx.a
+MLX_FLAGS 	= -L$(MLX_DIR) -lmlx -lXext -lX11
 
-%.o: %.c so_long.h
-	$(CC) $(CFLAGS) $(MLXFLAGS) -c $< -o $@
+SRC_DIR = src
+OBJ_DIR = obj
+INC_DIR = includes
+
+SRCS = check_map.c \
+	free.c \
+	game.c \
+	move.c \
+	put_images.c \
+	utils_check_map.c \
+	flood_fill.c 
+
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
+
+
+all:  $(LIBFT) $(MLX_LIB) $(NAME)
+
+$(LIBFT):
+	make -C $(LIBFT_DIR)
+
+$(MLX_LIB):
+	make -C $(MLX_DIR)
+
+$(NAME): $(MLX_LIB) $(OBJS)
+	$(CC) -no-pie $(OBJS) -L$(LIBFT_DIR) -lft $(MLX_FLAGS) -o $(NAME)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -f $(OBJ_FILES)
+	rm -rf $(OBJ_DIR)
+	make -C $(LIBFT_DIR) clean
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME)
+	make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 

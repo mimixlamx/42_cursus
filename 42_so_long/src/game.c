@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/18 13:56:54 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/18 15:44:41 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/03/20 12:09:28 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,16 @@ int	witch_key(int keycode, void *param)
 
 int	load_image(t_app *app)
 {
-	app->img_background = mlx_xpm_file_to_image(app->mlx, "background.xpm",
+	app->img_background = mlx_xpm_file_to_image(app->mlx,
+			"textures/background.xpm", &app->size, &app->size);
+	app->img_wall = mlx_xpm_file_to_image(app->mlx, "textures/wall.xpm",
 			&app->size, &app->size);
-	app->img_wall = mlx_xpm_file_to_image(app->mlx, "wall.xpm",
+	app->img_player = mlx_xpm_file_to_image(app->mlx, "textures/suprawb.xpm",
 			&app->size, &app->size);
-	app->img_player = mlx_xpm_file_to_image(app->mlx, "suprawb.xpm",
+	app->img_collectible = mlx_xpm_file_to_image(app->mlx,
+			"textures/collectibles.xpm",
 			&app->size, &app->size);
-	app->img_collectible = mlx_xpm_file_to_image(app->mlx, "collectibles.xpm",
-			&app->size, &app->size);
-	app->img_exit = mlx_xpm_file_to_image(app->mlx, "exit.xpm",
+	app->img_exit = mlx_xpm_file_to_image(app->mlx, "textures/exit.xpm",
 			&app->size, &app->size);
 	if (!app->img_player || !app->img_background || !app->img_wall
 		|| !app->img_collectible || !app->img_exit)
