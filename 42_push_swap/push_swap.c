@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/12 14:20:27 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/16 18:23:39 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/03/23 14:46:31 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 // verifier les cas derreur "" " "
@@ -124,12 +124,12 @@ int	main(int argc, char **argv)
 	data.stack_b[0] = data.stack_a[2];
 	data.stack_b[1] = data.stack_a[3];
 	i = 0;
-	while (i < data.size_a)
+	while (i < data.size_b)
 	{
 		ft_printf("line b %d =%d\n", i, data.stack_b[i]);
 		i++;
 	}
-	pb(&data);
+	rrr(&data);
 	i = 0;
 	while (i < data.size_a)
 	{
@@ -137,7 +137,7 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	i = 0;
-	while (i < data.size_a)
+	while (i < data.size_b)
 	{
 		ft_printf("line after b %d =%d\n", i, data.stack_b[i]);
 		i++;

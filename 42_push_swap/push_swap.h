@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/12 14:25:43 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/16 17:25:02 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/03/23 15:46:19 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,17 @@ typedef struct s_data
 	int		*stack_b;
 }	t_data;
 
-int	main(int argc, char **argv);
+int		main(int argc, char **argv);
 void	sa(t_data *data);
 void	sb(t_data *data);
 void	ss(t_data *data);
 void	pa(t_data *data);
 void	pb(t_data *data);
+void	ra(t_data *data);
+void	rb(t_data *data);
+void	rr(t_data *data);
+void	rra(t_data *data);
+void	rrb(t_data *data);
+void	rrr(t_data *data);
 
 #endif
