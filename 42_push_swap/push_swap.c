@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/12 14:20:27 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/23 14:46:31 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/03/24 16:03:19 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 // verifier les cas derreur "" " "
@@ -81,6 +81,20 @@ static int	check_duplicates(t_data *data)
 	return (1);
 }
 
+int	is_sorted(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->size_a - 1)
+	{
+		if (data->stack_a[i] > data->stack_a[i+1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	int	i;
@@ -109,27 +123,37 @@ int	main(int argc, char **argv)
 	}
 	if (check_int(&data) == 0)
 	return (ft_printf("error1\n", 1));
-	data.stack_a = ft_calloc(argc, sizeof(int ));
-	data.stack_b = ft_calloc(argc, sizeof(int ));
-	if(fill_stack_a(&data) == 0 || check_duplicates(&data) == 0)
+	data.stack_a = ft_calloc(argc, sizeof(int));
+	data.stack_b = ft_calloc(argc, sizeof(int));
+	if (fill_stack_a(&data) == 0 || check_duplicates(&data) == 0)
 		return (ft_printf("error2\n"), 1);
-
+	if (is_sorted(&data) == 1)
+		return (ft_printf("error3\n"), 1);
 	i = 0;
 	while (i < data.size_a)
 	{
 		ft_printf("line a %d =%d\n", i, data.stack_a[i]);
 		i++;
 	}
+	/*
 	data.size_b = 2;
 	data.stack_b[0] = data.stack_a[2];
 	data.stack_b[1] = data.stack_a[3];
+	*/
 	i = 0;
 	while (i < data.size_b)
 	{
 		ft_printf("line b %d =%d\n", i, data.stack_b[i]);
 		i++;
 	}
-	rrr(&data);
+	if (data.size_a == 2)
+		sort_2(&data);
+	else if (data.size_a == 3)
+		sort_3(&data);
+	else if (data.size_a > 3 && data.size_a <= 5)
+		sort_5(&data);
+	else
+		turk(&data);
 	i = 0;
 	while (i < data.size_a)
 	{

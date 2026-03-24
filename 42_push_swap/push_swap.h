@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/12 14:25:43 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/23 15:46:19 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/03/24 15:26:33 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,9 @@ void	rr(t_data *data);
 void	rra(t_data *data);
 void	rrb(t_data *data);
 void	rrr(t_data *data);
+void	sort_2(t_data *data);
+void	sort_3(t_data *data);
+void	sort_5(t_data *data);
+void	turk(t_data *data);
 
 #endif
