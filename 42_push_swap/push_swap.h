@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/12 14:25:43 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/24 15:26:33 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/03/25 15:37:08 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct s_data
 	int		size_b;
 	int		*stack_a;
 	int		*stack_b;
+	int		*cost_b;
+	int		*cost_a;
 }	t_data;
 
 int		main(int argc, char **argv);
@@ -41,5 +43,6 @@ void	sort_2(t_data *data);
 void	sort_3(t_data *data);
 void	sort_5(t_data *data);
 void	turk(t_data *data);
+int		index_min(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/16 15:12:48 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/24 15:26:21 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/03/25 15:36:41 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	sort_3(t_data *data)
 	}
 }
 
-static int	index_min(t_data *data)
+int	index_min(t_data *data)
 {
 	int	i;
 	int	min;
