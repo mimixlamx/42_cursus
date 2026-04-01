@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/24 14:50:00 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/25 15:58:29 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/01 15:59:27 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,26 +70,52 @@ void	cost_a(t_data *data)
 		i++;
 	}
 }
+int	ft_max(int cost_a, int cost_b)
+{
+	if ( cost_a > cost_b)
+		return (cost_a);
+	return (cost_b);
+}
 
-int	best_choice(t_data *data)
+int ft_abs(int	cost)
+{
+	if (cost < 0)
+		return (cost * -1);
+	return (cost);
+}
+
+void	total_cost(t_data *data)
 {
 	int	i;
 
+	data->total_cost = ft_calloc(data->size_b, sizeof(int));
 	i = 0;
-	while (i < size_b)
+	while (i < data->size_b)
 	{
-		if ((data->stack_a[i] > 0 && data->stack_b[i] > 0) ||
-				(data->stack_a[i] < 0 && data->stack_b[i] < 0))
-			;
+		if ((data->cost_a[i] > 0 && data->cost_b[i] > 0) ||
+				(data->cost_a[i] < 0 && data->cost_b[i] < 0))
+			 data->total_cost[i] = ft_max(ft_abs(data->cost_a[i]),
+				ft_abs(data->cost_b[i]));
+		else
+			data->total_cost[i] = ft_abs(data->cost_a[i]) + ft_abs(data->cost_b[i]);
+		i++;
 	}
+}
+
+int	best_choice(t_data *data)
+{
+	
 }
 
 void	turk(t_data *data)
 {
+	int index;
+
 	rush_b(data);
 	sort_3(data);
 	cost_b(data);
 	cost_a(data);
-	best_choice(data);
-
+	total_cost(data);
+	index = best_choice(data);
+	ft_printf("best choice = %d \n", index);
 }

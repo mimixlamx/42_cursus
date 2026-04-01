@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/12 14:25:43 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/25 15:37:08 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/01 14:05:28 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_data
 	int		*stack_b;
 	int		*cost_b;
 	int		*cost_a;
+	int		*total_cost;
 }	t_data;
 
 int		main(int argc, char **argv);
