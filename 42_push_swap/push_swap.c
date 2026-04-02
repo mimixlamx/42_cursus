@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/12 14:20:27 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/02 16:38:53 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/02 20:09:33 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -49,9 +49,9 @@ static int	fill_stack_a(t_data	*data)
 	i = 0;
 	while (i < data->size_a)
 	{
-		ft_printf("array %d = %s\n", i, data->array[i]);
+		//ft_printf("array %d = %s\n", i, data->array[i]);
 		temp = ft_atol(data->array[i]);
-		printf("temp %d = %ld\n", i, temp);
+		//printf("temp %d = %ld\n", i, temp);
 		if (temp < -2147483648 || temp > 2147483647)
 			return (ft_printf ("min or max\n"), 0);
 		data->stack_a[i] = (int)temp;
@@ -81,7 +81,7 @@ static int	check_duplicates(t_data *data)
 	return (1);
 }
 
-int	is_sorted(t_data *data)
+static int	is_sorted(t_data *data)
 {
 	int	i;
 
@@ -100,6 +100,7 @@ int	main(int argc, char **argv)
 	int		i;
 	t_data	data;
 
+	i = 0;
 	if (argc == 1)
 		return (1);
 	if (argc != 2)
@@ -118,34 +119,35 @@ int	main(int argc, char **argv)
 	i = 0;
 	while (i < data.size_a)
 	{
-		ft_printf("line array %d =%s\n", i, data.array[i]);
+		//ft_printf("line array %d =%s\n", i, data.array[i]);
 		i++;
 	}
 	if (check_int(&data) == 0)
 		return (ft_printf("error1\n", 1));
-	data.stack_a = ft_calloc(argc, sizeof(int));
-	data.stack_b = ft_calloc(argc, sizeof(int));
+	data.stack_a = ft_calloc(data.size_a, sizeof(int));
+	data.stack_b = ft_calloc(data.size_a, sizeof(int));
 	if (fill_stack_a(&data) == 0 || check_duplicates(&data) == 0)
 		return (ft_printf("error2\n"), 1);
 	if (is_sorted(&data) == 1)
 		return (ft_printf("error3\n"), 1);
-	i = 0;
+/*	i = 0;
 	while (i < data.size_a)
 	{
 		ft_printf("line a %d =%d\n", i, data.stack_a[i]);
 		i++;
 	}
-	/*
-	data.size_b = 2;
-	data.stack_b[0] = data.stack_a[2];
-	data.stack_b[1] = data.stack_a[3];
-	*/
+	
+	//data.size_b = 2;
+	//data.stack_b[0] = data.stack_a[2];
+	//data.stack_b[1] = data.stack_a[3];
+	
 	i = 0;
 	while (i < data.size_b)
 	{
 		ft_printf("line b %d =%d\n", i, data.stack_b[i]);
 		i++;
 	}
+	*/
 	if (data.size_a == 2)
 		sort_2(&data);
 	else if (data.size_a == 3)
@@ -154,7 +156,9 @@ int	main(int argc, char **argv)
 		sort_5(&data);
 	else
 		turk(&data);
-	i = 0;
+	free(data.stack_a);
+	free(data.stack_b);
+		/*i = 0;
 	while (i < data.size_a)
 	{
 		ft_printf("line after a %d =%d\n", i, data.stack_a[i]);
@@ -167,4 +171,4 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	return (ft_printf("the end\n", 0));
-}
+*/}

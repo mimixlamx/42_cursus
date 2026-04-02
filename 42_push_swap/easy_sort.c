@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/16 15:12:48 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/02 17:31:57 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/02 18:16:58 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	sort_2(t_data *data)
 		exec_order(data, "sa");
 }
 
-void	sort_3_1(t_data *data)
+void	sort_3(t_data *data)
 {
 	int	a;
 	int	b;

@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/24 14:50:00 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/02 16:43:38 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/02 19:54:56 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 void	rush_b(t_data *data)
 {
 	while (data->size_a > 3)
-	{
-		pb(data);
-		ft_printf("pb\n");
-	}
+		exec_order(data, "pb");
 }
 
 void	cost_b(t_data *data)
@@ -111,7 +108,7 @@ int	best_choice(t_data *data)
 	return (index);
 }
 
-void	free_all(t_data *data)
+static void	free_all(t_data *data)
 {
 	free(data->cost_a);
 	free(data->cost_b);
@@ -135,15 +132,27 @@ void	turk(t_data *data)
 		cost_a(data);
 		total_cost(data);
 		index = best_choice(data);
-		ft_printf("best choice = %d cost = %d\n", index, data->total_cost[index]);
+//		ft_printf("best choice = %d cost = %d\n", index, data->total_cost[index]);
 		if (data->cost_a[index] >= 0 && data->cost_b[index] >= 0)
 			move_pos(data, index);
 		else if (data->cost_a[index] <= 0 && data->cost_b[index] <= 0)
 			move_neg(data, index);
 		else
 			move_both(data, index);
-		pa(data);
-		ft_printf("pa\n");
+		exec_order(data, "pa");
 		free_all(data);
 	}
+	index = index_min(data);
+	if (index > data->size_a / 2)
+		while (index < data->size_a)
+		{
+			exec_order(data, "rra");
+			index++;
+		}
+	else
+		while (index > 0)
+		{
+			exec_order(data, "ra");
+			index--;
+		}
 }
