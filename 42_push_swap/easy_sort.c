@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/16 15:12:48 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/25 15:36:41 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/02 17:31:57 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,10 @@
 void	sort_2(t_data *data)
 {
 	if (data->stack_a[0] > data->stack_a[1])
-	{
-		sa(data);
-		ft_printf("sa\n");
-	}
+		exec_order(data, "sa");
 }
 
-/*
- *213 sa
- *231 rra
- *312 ra
- *123 nothing
- *132 sa + ra
- *321 sa + rra
-*/
-void	sort_3(t_data *data)
+void	sort_3_1(t_data *data)
 {
 	int	a;
 	int	b;
@@ -38,35 +27,22 @@ void	sort_3(t_data *data)
 	a = data->stack_a[0];
 	b = data->stack_a[1];
 	c = data->stack_a[2];
-	if (a < b && b < c)
-		;
-	else if (a > b && b < c && a < c)
-	{
-		sa(data);
-		ft_printf("ss\n");
-	}
+	if (a > b && b < c && a < c)
+		exec_order(data, "sa");
 	else if (a > b && b > c)
 	{
-		sa(data);
-		rra(data);
-		ft_printf("sa\nrra\n");
+		exec_order(data, "sa");
+		exec_order(data, "rra");
 	}
 	else if (a > b && b < c && a > c)
-	{
-		ra(data);
-		ft_printf("ra\n");
-	}
+		exec_order(data, "ra");
 	else if (a < b && b > c && a < c)
 	{
-		sa(data);
-		ra(data);
-		ft_printf("sa\nra\n");
+		exec_order(data, "sa");
+		exec_order(data, "ra");
 	}
 	else if (a < b && b > c && a > c)
-	{
-		rra(data);
-		ft_printf("rra\n");
-	}
+		exec_order(data, "rra");
 }
 
 int	index_min(t_data *data)
@@ -95,23 +71,13 @@ void	sort_5(t_data *data)
 	while (data->size_a > 3)
 	{
 		if (index_min(data) == 0)
-		{
-			pb(data);
-			ft_printf("pb\n");
-		}
+			exec_order(data, "pb");
 		else if (index_min(data) >= (data->size_a / 2))
-		{
-			rra(data);
-			ft_printf("rra\n");
-		}
+			exec_order(data, "rra");
 		else
-		{
-			ra(data);
-			ft_printf("ra\n");
-		}
+			exec_order(data, "ra");
 	}
 	sort_3(data);
-	pa(data);
-	pa(data);
-	ft_printf("pa\npa\n");
+	exec_order(data, "pa");
+	exec_order(data, "pa");
 }

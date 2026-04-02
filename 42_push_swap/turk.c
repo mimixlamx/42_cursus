@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/24 14:50:00 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/01 15:59:27 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/02 16:43:38 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	rush_b(t_data *data)
 {
-	while	(data->size_a > 3)
+	while (data->size_a > 3)
 	{
 		pb(data);
 		ft_printf("pb\n");
@@ -27,7 +27,6 @@ void	cost_b(t_data *data)
 
 	i = 0;
 	data->cost_b = ft_calloc(data->size_b, sizeof(int));
-
 	while (i < data->size_b)
 	{
 		if (i <= (data->size_b / 2))
@@ -54,12 +53,13 @@ void	cost_a(t_data *data)
 		found = 0;
 		while (y < data->size_a)
 		{
-			if (data->stack_a[y] > data->stack_b[i] && (!found || data->stack_a[y] < data->stack_a[min]))
+			if (data->stack_a[y] > data->stack_b[i] && (!found
+					|| data->stack_a[y] < data->stack_a[min]))
 			{
 				min = y;
 				found = 1;
 			}
-		y++;
+			y++;
 		}
 		if (!found)
 			min = index_min(data);
@@ -70,19 +70,6 @@ void	cost_a(t_data *data)
 		i++;
 	}
 }
-int	ft_max(int cost_a, int cost_b)
-{
-	if ( cost_a > cost_b)
-		return (cost_a);
-	return (cost_b);
-}
-
-int ft_abs(int	cost)
-{
-	if (cost < 0)
-		return (cost * -1);
-	return (cost);
-}
 
 void	total_cost(t_data *data)
 {
@@ -92,30 +79,71 @@ void	total_cost(t_data *data)
 	i = 0;
 	while (i < data->size_b)
 	{
-		if ((data->cost_a[i] > 0 && data->cost_b[i] > 0) ||
-				(data->cost_a[i] < 0 && data->cost_b[i] < 0))
-			 data->total_cost[i] = ft_max(ft_abs(data->cost_a[i]),
-				ft_abs(data->cost_b[i]));
+		if ((data->cost_a[i] > 0 && data->cost_b[i] > 0)
+			|| (data->cost_a[i] < 0 && data->cost_b[i] < 0))
+			data->total_cost[i] = ft_max(ft_abs(data->cost_a[i]),
+					ft_abs(data->cost_b[i]));
 		else
-			data->total_cost[i] = ft_abs(data->cost_a[i]) + ft_abs(data->cost_b[i]);
+			data->total_cost[i]
+				= ft_abs(data->cost_a[i]) + ft_abs(data->cost_b[i]);
 		i++;
 	}
 }
 
 int	best_choice(t_data *data)
 {
-	
+	int	i;
+	int	min;
+	int	index;
+
+	i = 0;
+	min = data->total_cost[i];
+	index = 0;
+	while (i < data->size_b)
+	{
+		if (data->total_cost[i] < min)
+		{
+			min = data->total_cost[i];
+			index = i;
+		}
+		i++;
+	}
+	return (index);
+}
+
+void	free_all(t_data *data)
+{
+	free(data->cost_a);
+	free(data->cost_b);
+	free(data->total_cost);
+	data->cost_a = NULL;
+	data->cost_b = NULL;
+	data->total_cost = NULL;
 }
 
 void	turk(t_data *data)
 {
-	int index;
+	int	index;
+	int	i;
 
+	i = 0;
 	rush_b(data);
 	sort_3(data);
-	cost_b(data);
-	cost_a(data);
-	total_cost(data);
-	index = best_choice(data);
-	ft_printf("best choice = %d \n", index);
+	while (data->size_b > 0)
+	{
+		cost_b(data);
+		cost_a(data);
+		total_cost(data);
+		index = best_choice(data);
+		ft_printf("best choice = %d cost = %d\n", index, data->total_cost[index]);
+		if (data->cost_a[index] >= 0 && data->cost_b[index] >= 0)
+			move_pos(data, index);
+		else if (data->cost_a[index] <= 0 && data->cost_b[index] <= 0)
+			move_neg(data, index);
+		else
+			move_both(data, index);
+		pa(data);
+		ft_printf("pa\n");
+		free_all(data);
+	}
 }

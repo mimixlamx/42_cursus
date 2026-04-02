@@ -6,12 +6,12 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/12 14:20:27 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/24 16:03:19 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/02 16:38:53 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
-// verifier les cas derreur "" " "
 #include "push_swap.h"
 #include <stdio.h>
+
 static int	check_int(t_data *data)
 {
 	int	i;
@@ -47,13 +47,13 @@ static int	fill_stack_a(t_data	*data)
 	long	temp;
 
 	i = 0;
-	while(i < data->size_a)
+	while (i < data->size_a)
 	{
-	ft_printf("array %d = %s\n", i, data->array[i]);
-	temp = ft_atol(data->array[i]);
+		ft_printf("array %d = %s\n", i, data->array[i]);
+		temp = ft_atol(data->array[i]);
 		printf("temp %d = %ld\n", i, temp);
 		if (temp < -2147483648 || temp > 2147483647)
-			return (ft_printf ("min or max\n"),0);
+			return (ft_printf ("min or max\n"), 0);
 		data->stack_a[i] = (int)temp;
 		i++;
 	}
@@ -71,7 +71,7 @@ static int	check_duplicates(t_data *data)
 	{
 		while (y < data ->size_a)
 		{
-			 if (data->stack_a[i] == data->stack_a[y])
+			if (data->stack_a[i] == data->stack_a[y])
 				return (ft_printf("duplicate\n"), 0);
 			y++;
 		}
@@ -88,7 +88,7 @@ int	is_sorted(t_data *data)
 	i = 0;
 	while (i < data->size_a - 1)
 	{
-		if (data->stack_a[i] > data->stack_a[i+1])
+		if (data->stack_a[i] > data->stack_a[i + 1])
 			return (0);
 		i++;
 	}
@@ -97,12 +97,12 @@ int	is_sorted(t_data *data)
 
 int	main(int argc, char **argv)
 {
-	int	i;
+	int		i;
 	t_data	data;
 
 	if (argc == 1)
-		return(1);
-	if(argc != 2)
+		return (1);
+	if (argc != 2)
 	{
 		data.array = argv + 1;
 		data.size_a = argc - 1;
@@ -122,7 +122,7 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	if (check_int(&data) == 0)
-	return (ft_printf("error1\n", 1));
+		return (ft_printf("error1\n", 1));
 	data.stack_a = ft_calloc(argc, sizeof(int));
 	data.stack_b = ft_calloc(argc, sizeof(int));
 	if (fill_stack_a(&data) == 0 || check_duplicates(&data) == 0)

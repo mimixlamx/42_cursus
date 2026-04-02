@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/12 14:25:43 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/01 14:05:28 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/02 17:25:21 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,12 @@ void	sort_3(t_data *data);
 void	sort_5(t_data *data);
 void	turk(t_data *data);
 int		index_min(t_data *data);
+void	move_pos(t_data *data, int	index);
+void	move_neg(t_data *data, int	index);
+void	move_both(t_data *data, int index);
+int	ft_max(int cost_a, int cost_b);
+int	ft_min(int cost_a, int cost_b);
+int ft_abs(int	cost);
+void	exec_order(t_data *data, char *order);
 
 #endif
