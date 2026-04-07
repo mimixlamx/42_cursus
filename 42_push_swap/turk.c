@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/24 14:50:00 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/02 19:54:56 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/07 12:40:00 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	rush_b(t_data *data)
 {
 	while (data->size_a > 3)
 		exec_order(data, "pb");
+	sort_3(data);
 }
 
 void	cost_b(t_data *data)
@@ -87,52 +88,17 @@ void	total_cost(t_data *data)
 	}
 }
 
-int	best_choice(t_data *data)
-{
-	int	i;
-	int	min;
-	int	index;
-
-	i = 0;
-	min = data->total_cost[i];
-	index = 0;
-	while (i < data->size_b)
-	{
-		if (data->total_cost[i] < min)
-		{
-			min = data->total_cost[i];
-			index = i;
-		}
-		i++;
-	}
-	return (index);
-}
-
-static void	free_all(t_data *data)
-{
-	free(data->cost_a);
-	free(data->cost_b);
-	free(data->total_cost);
-	data->cost_a = NULL;
-	data->cost_b = NULL;
-	data->total_cost = NULL;
-}
-
 void	turk(t_data *data)
 {
 	int	index;
-	int	i;
 
-	i = 0;
 	rush_b(data);
-	sort_3(data);
 	while (data->size_b > 0)
 	{
 		cost_b(data);
 		cost_a(data);
 		total_cost(data);
 		index = best_choice(data);
-//		ft_printf("best choice = %d cost = %d\n", index, data->total_cost[index]);
 		if (data->cost_a[index] >= 0 && data->cost_b[index] >= 0)
 			move_pos(data, index);
 		else if (data->cost_a[index] <= 0 && data->cost_b[index] <= 0)

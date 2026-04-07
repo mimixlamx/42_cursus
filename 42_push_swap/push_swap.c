@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/12 14:20:27 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/02 20:09:33 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/07 12:13:23 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -49,9 +49,7 @@ static int	fill_stack_a(t_data	*data)
 	i = 0;
 	while (i < data->size_a)
 	{
-		//ft_printf("array %d = %s\n", i, data->array[i]);
 		temp = ft_atol(data->array[i]);
-		//printf("temp %d = %ld\n", i, temp);
 		if (temp < -2147483648 || temp > 2147483647)
 			return (ft_printf ("min or max\n"), 0);
 		data->stack_a[i] = (int)temp;
@@ -119,7 +117,6 @@ int	main(int argc, char **argv)
 	i = 0;
 	while (i < data.size_a)
 	{
-		//ft_printf("line array %d =%s\n", i, data.array[i]);
 		i++;
 	}
 	if (check_int(&data) == 0)
@@ -130,24 +127,6 @@ int	main(int argc, char **argv)
 		return (ft_printf("error2\n"), 1);
 	if (is_sorted(&data) == 1)
 		return (ft_printf("error3\n"), 1);
-/*	i = 0;
-	while (i < data.size_a)
-	{
-		ft_printf("line a %d =%d\n", i, data.stack_a[i]);
-		i++;
-	}
-	
-	//data.size_b = 2;
-	//data.stack_b[0] = data.stack_a[2];
-	//data.stack_b[1] = data.stack_a[3];
-	
-	i = 0;
-	while (i < data.size_b)
-	{
-		ft_printf("line b %d =%d\n", i, data.stack_b[i]);
-		i++;
-	}
-	*/
 	if (data.size_a == 2)
 		sort_2(&data);
 	else if (data.size_a == 3)
@@ -158,17 +137,4 @@ int	main(int argc, char **argv)
 		turk(&data);
 	free(data.stack_a);
 	free(data.stack_b);
-		/*i = 0;
-	while (i < data.size_a)
-	{
-		ft_printf("line after a %d =%d\n", i, data.stack_a[i]);
-		i++;
-	}
-	i = 0;
-	while (i < data.size_b)
-	{
-		ft_printf("line after b %d =%d\n", i, data.stack_b[i]);
-		i++;
-	}
-	return (ft_printf("the end\n", 0));
-*/}
+}

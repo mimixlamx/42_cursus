@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/12 14:25:43 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/02 17:25:21 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/07 12:12:01 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,7 @@ int	ft_max(int cost_a, int cost_b);
 int	ft_min(int cost_a, int cost_b);
 int ft_abs(int	cost);
 void	exec_order(t_data *data, char *order);
+int		best_choice(t_data *data);
+void	free_all(t_data *data);
 
 #endif
