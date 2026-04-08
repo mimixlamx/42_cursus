@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/04/07 12:10:59 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/07 12:13:54 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/08 12:29:15 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -30,6 +30,13 @@ int	best_choice(t_data *data)
 		i++;
 	}
 	return (index);
+}
+
+void	rush_b(t_data *data)
+{
+	while (data->size_a > 3)
+		exec_order(data, "pb");
+	sort_3(data);
 }
 
 void	free_all(t_data *data)

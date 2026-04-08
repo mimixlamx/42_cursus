@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/16 16:16:46 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/02 16:35:18 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/08 13:39:07 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	pa(t_data *data)
 {
 	int	i;
-	int	temp;
 
 	i = data->size_a;
 	if (data->size_b == 0)
@@ -39,7 +38,6 @@ void	pa(t_data *data)
 void	pb(t_data *data)
 {
 	int	i;
-	int	temp;
 
 	i = data->size_b;
 	if (data->size_a == 0)

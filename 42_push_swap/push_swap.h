@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/12 14:25:43 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/07 12:12:01 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/08 15:08:30 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef struct s_data
 	int		*total_cost;
 }	t_data;
 
-int		main(int argc, char **argv);
 void	sa(t_data *data);
 void	sb(t_data *data);
 void	ss(t_data *data);
@@ -44,15 +43,23 @@ void	sort_2(t_data *data);
 void	sort_3(t_data *data);
 void	sort_5(t_data *data);
 void	turk(t_data *data);
-int		index_min(t_data *data);
-void	move_pos(t_data *data, int	index);
-void	move_neg(t_data *data, int	index);
+void	rush_b(t_data *data);
+void	move_pos(t_data *data, int index);
+void	move_neg(t_data *data, int index);
 void	move_both(t_data *data, int index);
-int	ft_max(int cost_a, int cost_b);
-int	ft_min(int cost_a, int cost_b);
-int ft_abs(int	cost);
-void	exec_order(t_data *data, char *order);
-int		best_choice(t_data *data);
 void	free_all(t_data *data);
+void	exec_order(t_data *data, char *order);
+void	cost_a(t_data *data);
+void	cost_b(t_data *data);
+void	total_cost(t_data *data);
+int		main(int argc, char **argv);
+int		index_min(t_data *data);
+int		ft_max(int cost_a, int cost_b);
+int		ft_min(int cost_a, int cost_b);
+int		ft_abs(int cost);
+int		best_choice(t_data *data);
+int		check_int(t_data *data);
+int		check_duplicates(t_data *data);
+int		is_sorted(t_data *data);
 
 #endif
