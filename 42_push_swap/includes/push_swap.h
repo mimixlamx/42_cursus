@@ -6,15 +6,16 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/12 14:25:43 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/08 15:08:30 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/09 15:45:08 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft/libft.h"
+# include "libft.h"
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_data
 {

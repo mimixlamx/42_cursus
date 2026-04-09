@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/16 16:16:46 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/08 13:39:07 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/09 14:25:30 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	pa(t_data *data)
 	}
 	data->stack_a[0] = data->stack_b[0];
 	i = 0;
-	while (i < data->size_b)
+	while (i < data->size_b - 1)
 	{
 		data->stack_b[i] = data->stack_b[i + 1];
 		i++;
@@ -49,7 +49,7 @@ void	pb(t_data *data)
 	}
 	data->stack_b[0] = data->stack_a[0];
 	i = 0;
-	while (i < data->size_a)
+	while (i < data->size_a - 1)
 	{
 		data->stack_a[i] = data->stack_a[i + 1];
 		i++;

@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/12 14:20:27 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/08 15:09:14 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/09 15:56:05 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -36,13 +36,13 @@ static int	run(t_data *data)
 	while (i < data->size_a)
 		i++;
 	if (check_int(data) == 0)
-		return (ft_printf("Error\n", 0));
+		return (write(2, "Error\n", 6), 0);
 	data->stack_a = ft_calloc(data->size_a, sizeof(int));
 	data->stack_b = ft_calloc(data->size_a, sizeof(int));
 	if (fill_stack_a(data) == 0 || check_duplicates(data) == 0)
-		return (ft_printf("Error\n"), 0);
+		return (free(data->stack_a), free(data->stack_b),  write(2, "Error\n", 6), 0);
 	if (is_sorted(data) == 1)
-		return (0);
+		return (free(data->stack_a), free(data->stack_b), 0);
 	if (data->size_a == 2)
 		sort_2(data);
 	else if (data->size_a == 3)
@@ -54,6 +54,23 @@ static int	run(t_data *data)
 	free(data->stack_a);
 	free(data->stack_b);
 	return (1);
+}
+
+static void	free_array(t_data *data, int argc)
+{
+	int	i;
+
+	if (argc == 2)
+	{
+		i = 0;
+		while (i < data->size_a)
+		{
+			free(data->array[i]);
+			i++;
+		}
+		free(data->array);
+		data->array = NULL;
+	}
 }
 
 int	main(int argc, char **argv)
@@ -77,6 +94,10 @@ int	main(int argc, char **argv)
 			i++;
 		data.size_a = i;
 	}
-	run(&data);
+	if (!data.array[0])
+		return (free(data.array), write(2, "Error\n", 6), 1);
+	if (run(&data) == 0 && argc == 2)
+		return (free_array(&data, argc), 1);
+	free_array(&data, argc);
 	return (0);
 }
