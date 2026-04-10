@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/12 14:20:27 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/09 15:56:05 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/10 12:20:30 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -40,7 +40,8 @@ static int	run(t_data *data)
 	data->stack_a = ft_calloc(data->size_a, sizeof(int));
 	data->stack_b = ft_calloc(data->size_a, sizeof(int));
 	if (fill_stack_a(data) == 0 || check_duplicates(data) == 0)
-		return (free(data->stack_a), free(data->stack_b),  write(2, "Error\n", 6), 0);
+		return (free(data->stack_a), free(data->stack_b),
+			write(2, "Error\n", 6), 0);
 	if (is_sorted(data) == 1)
 		return (free(data->stack_a), free(data->stack_b), 0);
 	if (data->size_a == 2)
