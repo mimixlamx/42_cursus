@@ -1,7 +1,7 @@
 NAME 		= so_long
 
 CC 			= gcc
-CFLAGS 		= -Wall -Werror -Wextra -g -no-pie
+CFLAGS 		= -Wall -Werror -Wextra
 
 INCLUDES = -I$(INC_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR)
 
@@ -9,7 +9,6 @@ LIBFT_DIR	= libft
 LIBFT 		= $(LIBFT_DIR)/libft.a
 
 MLX_DIR 	= minilibx-linux
-MLX_LIB 	= $(MLX_DIR)/libmlx.a
 MLX_FLAGS 	= -L$(MLX_DIR) -lmlx -lXext -lX11
 
 SRC_DIR = src
@@ -36,7 +35,7 @@ $(MLX_LIB):
 	make -C $(MLX_DIR)
 
 $(NAME): $(MLX_LIB) $(OBJS)
-	$(CC) -no-pie $(OBJS) -L$(LIBFT_DIR) -lft $(MLX_FLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft $(MLX_FLAGS) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(OBJ_DIR)

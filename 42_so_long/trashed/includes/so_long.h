@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/02/12 13:52:09 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/20 15:12:44 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/10 16:58:12 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -15,11 +15,11 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../libft/libft.h"
+# include "libft.h"
 # include <stdlib.h>
 # include <fcntl.h>
 #include <unistd.h>
-# include "../minilibx-linux/mlx.h"
+# include "mlx.h"
 
 typedef struct s_check
 {
