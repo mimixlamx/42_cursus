@@ -39,7 +39,6 @@ make re
 ### Documentation
 - Official 42 push_swap subject
 - C standard library documentation
-- man pages (malloc, free, write)
 
 ### Learning Resources
 - Algorithm optimization concepts
@@ -48,11 +47,10 @@ make re
 
 ### AI Usage
 AI was used to:
-- Debug memory issues (Valgrind, invalid free)
-- Identify edge cases and segmentation faults
-- Improve code structure and reduce complexity
+- Help understand and refine the Turk algorithm approach
+- Assist in writing and structuring the Makefile according to project requirements
 
-The core algorithm and logic were fully implemented manually.
+The core algorithm and overall project logic were designed and implemented manually.
 
 ## Features
 
