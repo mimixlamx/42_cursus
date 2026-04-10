@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/03/18 13:56:54 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/20 16:45:31 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/10 16:30:09 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,24 @@ int	launch_game(t_check *check)
 {
 	t_app	app;
 
+	app.mlx = NULL;
+	app.win = NULL;
+	app.img_wall = NULL;
+	app.img_background = NULL;
+	app.img_player = NULL;
+	app.img_collectible = NULL;
+	app.img_exit = NULL;
 	app.count_move = 0;
 	app.collected = 0;
 	app.check = *check;
 	app.mlx = mlx_init();
+	if (!app.mlx)
+		return (0);
 	app.size = 128;
 	app.win = mlx_new_window(app.mlx, (128 * app.check.w),
 			(128 * app.check.h), "Test MLX");
 	if (load_image(&app) == 0)
-		return (0);
+		close_window(&app);
 	put_image(&app);
 	mlx_key_hook(app.win, witch_key, &app);
 	mlx_hook(app.win, 17, 0, close_window, &app);

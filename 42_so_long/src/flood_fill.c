@@ -6,21 +6,25 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/02/12 14:09:46 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/03/20 16:49:50 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/10 16:42:57 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
 
 static int	flood_fill(int x, int y, t_check *check)
 {
-	if (x < 0 || y < 0 || x > check->h || y > check->w)
+	if (x < 0 || y < 0 || x >= check->h || y >= check->w)
 		return (0);
 	if (check->visited_map[x][y] == '1' || check->visited_map[x][y] == 'V')
 		return (0);
 	if (check->visited_map[x][y] == 'C')
 		check->found_c++;
 	if (check->visited_map[x][y] == 'E')
+	{
 		check->found_e++;
+		check->visited_map[x][y] = 'V';
+		return (0);
+	}
 	check->visited_map[x][y] = 'V';
 	flood_fill(x + 1, y, check);
 	flood_fill(x - 1, y, check);
@@ -44,8 +48,6 @@ int	flood_fil_launch(t_check *check)
 	}
 	flood_fill(check->x, check->y, check);
 	i = 0;
-	while (i < check->h)
-	i++;
 	if (check->found_c != check->c || check->found_e != 1)
 		return (ft_printf("Error\nin collectibles or exit e = %d c = %d\n",
 				check->found_e, check->found_c), 0);
