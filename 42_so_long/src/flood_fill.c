@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/02/12 14:09:46 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/10 16:42:57 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/13 12:34:27 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
@@ -41,9 +41,13 @@ int	flood_fil_launch(t_check *check)
 	check->found_c = 0;
 	check->found_e = 0;
 	check->visited_map = ft_calloc(check->h + 1, sizeof(char *));
+	if (!check->visited_map)
+		return (0);
 	while (i < check->h)
 	{
 		check->visited_map[i] = ft_strdup(check->map[i]);
+		if (!check->visited_map[i])
+			return (0);
 		i++;
 	}
 	flood_fill(check->x, check->y, check);
