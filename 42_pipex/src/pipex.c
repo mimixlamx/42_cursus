@@ -134,6 +134,7 @@ int	main(int argc, char **argv, char **envp)
 		return (1);
 	ft_printf("path_1 = %s\n", data.path_1);
 	ft_printf("path_2 = %s\n", data.path_2);
+	open_fd(&data, argv);
 	return (final_free(&data), 0);
 }
 
