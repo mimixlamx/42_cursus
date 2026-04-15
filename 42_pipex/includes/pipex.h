@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/04/14 14:16:28 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/14 14:16:39 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/15 16:13:43 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <sys/wait.h>
+# include <errno.h>
 
 typedef struct s_data
 {
@@ -31,7 +32,7 @@ typedef struct s_data
 	int		pipefd[2];
 	int		forked1;
 	int		forked2;
-
+	int		status;
 }	t_data;
 
 void	free_list(char **list);

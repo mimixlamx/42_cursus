@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/04/14 14:15:06 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/14 15:54:08 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/15 15:20:01 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,3 @@ void	final_free(t_data *data)
 	}
 	free_path(data);
 }
-

@@ -5,7 +5,7 @@ CFLAGS 		= -Wall -Werror -Wextra
 
 INCLUDES = -I$(INC_DIR) -I$(LIBFT_DIR)
 
-LIBFT_DIR	= libft 
+LIBFT_DIR	= libft
 LIBFT 		= $(LIBFT_DIR)/libft.a
 
 SRC_DIR = src
