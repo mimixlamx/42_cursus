@@ -14,7 +14,9 @@ INC_DIR = includes
 
 SRCS = pipex.c \
 	fd.c \
-	free.c
+	free.c \
+	path.c \
+	forked.c
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 

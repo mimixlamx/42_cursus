@@ -6,7 +6,7 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/04/14 14:16:28 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/04/15 16:13:43 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/04/16 16:12:43 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ typedef struct s_data
 void	free_list(char **list);
 void	final_free(t_data *data);
 void	open_fd(t_data *data, char **argv);
+void	close_all_fd(t_data *data);
 void	fork_process_1(t_data *data);
-void	fork_process_2(t_data *data);
+int		find_path(t_data *data, char **envp);
 
 #endif
