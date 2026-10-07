@@ -6,11 +6,17 @@
 /*   By: mbruyere <marvin@42.fr>                       +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2026/10/07 12:38:08 by mbruyere       #+#    #+#                */
-/*   Updated: 2026/10/07 12:38:12 by mbruyere       ########   odam.nl        */
+/*   Updated: 2026/10/07 13:02:06 by mbruyere       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+/*
+ ** heure ed depart pour mise a 0 des last meal 
+ ** creation d'un thread par philo qui va lancer la routine 
+ ** une fois les thread ok le thread principal passe a la surveillance
+*/
 
 static int	launch(t_table *t)
 {
@@ -37,6 +43,13 @@ static int	launch(t_table *t)
 	monitor(t);
 	return (i);
 }
+
+/*
+ ** si les argument sont mauvais error idem pour l'initialisation
+ ** creation de nbphilo thread avec launch
+ ** attente avec join de chaque thread
+ ** netoyage avant fermeture
+*/
 
 int	main(int argc, char **argv)
 {
